@@ -40,3 +40,7 @@ Back-end
 * `cd client`
 * run: `npm install`
 * to run app: `npm start`
+
+## IntelliJ Project Settings
+Make sure to enable EMCAscript 6 
+(Languages & Frameworks > JavaScript > JavaScript language version: ECMAScript 6)
