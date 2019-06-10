@@ -5,21 +5,29 @@ An online website for those in need of reliable contractors.
 
 ### Pending Tasks
 Front-end
-- Landing Page
-- Home Page
-- Messages Page
+- Create Home Page/Landing Page
+  - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
+- Create Messages Page
+  - On each job page, user can message job poster
+  - Message page will have message body from which user can message job poster
 - Create Job Posting Page
+  - Jobs will have Name, Price, Description, Location
+- Create administration pages (allow administrator to remove job posting, users, etc.)
 
 Back-end
+- Populate database
+    - Connect app to database
+- Create functions for messaging
+- Create functions for listing job
+- Create function for processing payment
 
-- task 1
 --- 
 
  *__*Completed Tasks will be be ~~crossed through~~*__
 
 #### Jack
-* ~~completed task 1 etc.~~
-* assigned task 1 etc.
+* ~~ Create database ~~
+* Finish README
 
 #### Jan
 * ~~completed task 1 etc.~~
