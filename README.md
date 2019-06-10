@@ -35,9 +35,9 @@ Back-end
 
 * assigned task 1 etc.
 #### Leisha
-* ~~completed task 1 etc.~~
+- Create Job Posting Page
+  - Jobs will have Name, Price, Description, Location
 
-* assigned task 1 etc.
 #### Jon
 * ~~completed task 1 etc.~~
 
