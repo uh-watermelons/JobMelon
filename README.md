@@ -30,7 +30,8 @@ Back-end
 * Finish README
 
 #### Jan
-* ~~completed task 1 etc.~~
+- Create Home Page/Landing Page
+  - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
 
 * assigned task 1 etc.
 #### Leisha
