@@ -1,33 +1,42 @@
-# jobmelon
-Description of app
+# JobMelon
+An online website for those in need of reliable contractors.
 
 ---
 
 ### Pending Tasks
-* item 1
-* item 2
+Front-end
+- Landing Page
+- Home Page
+- Messages Page
+- Create Job Posting Page
 
+Back-end
+
+- task 1
 --- 
 
-*__*Completed Tasks will be be ~~crossed through~~*__
+ *__*Completed Tasks will be be ~~crossed through~~*__
+
 #### Jack
 * ~~completed task 1 etc.~~
 * assigned task 1 etc.
+
 #### Jan
 * ~~completed task 1 etc.~~
+
 * assigned task 1 etc.
-
-
 #### Leisha
 * ~~completed task 1 etc.~~
-* assigned task 1 etc.
 
+* assigned task 1 etc.
 #### Jon
 * ~~completed task 1 etc.~~
+
 * assigned task 1 etc.
 
+***
 
-# How to run client side
+## How to run client side
 * `cd client`
 * run: `npm install`
 * to run app: `npm start`
