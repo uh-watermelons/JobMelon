@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Header from './components/Header';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        JobMelon
-      </header>
 
-      <header className="App-header">
-      Landing Page! Edit me plz.
-      </header>
+class App extends Component {
+
+  state = {
+    loggedIn: false
+  }
+
+  render() {
+    return (
+      <div className="App">
+      <Header />
     </div>
-  );
+      );
+  }
 }
+
 
 export default App;
