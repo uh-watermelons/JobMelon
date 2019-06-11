@@ -33,6 +33,8 @@ Back-end
 - Create Home Page/Landing Page
   - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
 
+- ~~Basic Header~~
+
 * assigned task 1 etc.
 #### Leisha
 - Create Job Posting Page
