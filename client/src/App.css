@@ -10,9 +10,13 @@ body {
 }
 
 a {
-	color: #333;
 	text-decoration: none;
 }
+
+
+
+
+
 
 .Header {
 	padding: 20px;
@@ -40,4 +44,23 @@ a {
 }
 .header-item-2 > a {
 	padding: 5px;
+}
+
+
+
+
+
+
+
+.homepage-header {
+	margin: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.job-listings-layout {
+	padding: 30px;
+	margin-left: 20px;
+	margin-right: 20px;
+	display: flex;
 }

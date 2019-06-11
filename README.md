@@ -34,6 +34,7 @@ Back-end
   - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
 
 - ~~Basic Header~~
+- ~~Basic layout of job listings using flexbox~~
 
 * assigned task 1 etc.
 #### Leisha
