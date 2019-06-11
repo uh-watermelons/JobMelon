@@ -1,15 +1,21 @@
 import React from 'react';
+import watermelon from '../images/watermelon.svg';
 
 function Header(props) {
     return (
       <header className="Header">
-        <h1>JobMelon</h1>
-        <nav>
-        	<ul style={{padding:0}}>
-          		<li>Home</li>
-          		<li>About us</li>
-          	</ul>
-        </nav>
+        <div className="header-layout">
+          <h1 className="header-item-1">
+            JobMelon
+          </h1>
+          <img src={ watermelon } 
+              alt="Watermelon Icon"/>
+          <nav className="header-item-2">
+            	<a href="#">Home</a>
+            	<a href="#">Log In</a>
+              <a href="#">Sign Up</a>
+          </nav>
+        </div>
       </header>
       );
   }

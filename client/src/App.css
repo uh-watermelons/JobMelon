@@ -13,3 +13,31 @@ a {
 	color: #333;
 	text-decoration: none;
 }
+
+.Header {
+	padding: 20px;
+	background-color: #2acc60;
+	color: white;
+}
+
+.header-layout {
+}
+
+.header-item-1 {
+
+}
+
+.header-layout > img {
+	padding: 0;
+	margin: 0;
+	width: 50px;
+	height: 50px;
+
+}
+
+.header-item-2 {
+	float: right;
+}
+.header-item-2 > a {
+	padding: 5px;
+}
