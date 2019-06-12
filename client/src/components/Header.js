@@ -11,7 +11,9 @@ function Header(props) {
           <img src={ watermelon } 
               alt="Watermelon Icon"/>
           <nav className="header-item-2">
-            	<a href="#">Home</a>
+              <a href="#">Home</a>
+              <a href="#">Profile</a>
+              <a href="#">Messages</a>
             	<a href="#">Log In</a>
               <a href="#">Sign Up</a>
           </nav>
