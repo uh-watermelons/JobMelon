@@ -1,8 +1,6 @@
 # JobMelon
 An online website for those in need of reliable contractors.
 
----
-
 ### Pending Tasks
 Front-end
 - Create Home Page/Landing Page
@@ -13,6 +11,11 @@ Front-end
 - Create Job Posting Page
   - Jobs will have Name, Price, Description, Location
 - Create administration pages (allow administrator to remove job posting, users, etc.)
+- Create Log In/Sign Up Page
+- Create Profile Page
+  - Edit button will allow user to submit form to edit page
+  - Information will include: name, number, payment info, and current Job Listings (client/contractor)
+  - For clients - Create Add new job offer
 
 Back-end
 - Populate database
@@ -20,18 +23,30 @@ Back-end
 - Create functions for messaging
 - Create functions for listing job
 - Create function for processing payment
+- Create routes for:
+  - Home Page
+  - Logging/Signing in
+  - Messages
+  - Profile Page
+  - Job Listing Page
 
 --- 
 
  *__*Completed Tasks will be be ~~crossed through~~*__
 
 #### Jack
-* ~~ Create database ~~
+* ~~Create database~~
 * Finish README
 
 #### Jan
-- Create Home Page/Landing Page
-  - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
+- Fix Home Page
+  - Decide whether to move Header.js to be rendered in App.js or in HomePage.js component
+  - Fix the width of JobListings
+  - Make sure only maximum amount of JobListings in a row is 4
+  - Make JobListing card look better
+  - Style the View Job button
+- Create Footer
+- Fix JobListing (detailed) Page
 
 - ~~Created Basic Header~~
 - ~~Created Basic layout of job listings using flexbox~~
@@ -40,6 +55,8 @@ Back-end
 #### Leisha
 - Create Job Posting Page
   - Jobs will have Name, Price, Description, Location
+  - Make sure to validate form, make sure data is sanitized
+  - Clicking button to create job posting will prompt user to CONFIRM it
 
 #### Jon
 * ~~completed task 1 etc.~~
