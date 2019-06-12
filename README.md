@@ -33,10 +33,10 @@ Back-end
 - Create Home Page/Landing Page
   - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
 
-- ~~Basic Header~~
-- ~~Basic layout of job listings using flexbox~~
+- ~~Created Basic Header~~
+- ~~Created Basic layout of job listings using flexbox~~
+- ~~Created Basic JobListing (detailed) page~~
 
-* assigned task 1 etc.
 #### Leisha
 - Create Job Posting Page
   - Jobs will have Name, Price, Description, Location
