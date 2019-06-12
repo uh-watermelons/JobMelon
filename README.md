@@ -5,6 +5,9 @@ An online website for those in need of reliable contractors.
 Front-end
 - Create Home Page/Landing Page
   - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
+- Create Footer
+  - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
+- Create Terms of Use, Privacy Policy, and Cookie Policy Pages
 - Create Messages Page
   - On each job page, user can message job poster
   - Message page will have message body from which user can message job poster
@@ -45,7 +48,9 @@ Back-end
   - Make sure only maximum amount of JobListings in a row is 4
   - Make JobListing card look better
   - Style the View Job button
-- Create Footer
+- ~~Create Footer~~
+  - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
+- Create Terms of Use, Privacy Policy, and Cookie Policy Pages
 - Fix JobListing (detailed) Page
 
 - ~~Created Basic Header~~
