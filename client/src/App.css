@@ -14,9 +14,11 @@ a {
 }
 
 
+/*************************
+ 
+ 	Header Styling 
 
-
-
+************************/
 
 .Header {
 	padding: 20px;
@@ -48,9 +50,31 @@ a {
 }
 
 
+/*************************
+ 
+ 	Footer Styling 
+
+************************/
 
 
+.Footer {
+	background-color: #606e84;
+	color: white;
+	height: 90px;
+	display: flex;
+	padding-top: 20px;
+}
 
+.Footer > * {
+	margin: 0 20px 0 20px;
+}
+
+
+/*************************
+ 
+ 	Home Page Styling
+
+************************/
 
 
 .homepage-header {
@@ -79,7 +103,11 @@ a {
 
 
 
+/*************************
+ 
+ 	Job Listing Page Styling 
 
+************************/
 
 
 .listing {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import HomePage from './components/pages/home_page/HomePage';
 import JobListingDetailed from './components/pages/job_listing_detailed_page/JobListingDetailed';
 import './App.css';
@@ -48,6 +49,7 @@ class App extends Component {
         <div>
         <Header />
         <HomePage jobs={this.jobs}/>
+        <Footer />
         </div>
         ;
 
