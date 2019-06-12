@@ -75,3 +75,41 @@ a {
 	margin: 20px;
 	padding: 20px;
 }
+
+
+
+
+
+
+
+.listing {
+	margin-top: 50px;
+	margin-left: 200px;
+	margin-right: 200px;
+	display: flex;
+}
+
+.listing-info {
+	padding-right: 100px;
+	flex: 1;
+}
+.listing-info > * {
+	padding: 10px;
+}
+
+.listing-contact {
+	width: 20%;
+}
+
+.listing-contact > div > img {
+	max-width: 100%;
+}
+
+.listing-contact > .contact-btn {
+	background-color: gray;
+	min-width: 100%;
+	padding: 20px;
+	font-size: 20px;
+	color: white;
+	border-radius: 10px;
+}
