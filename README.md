@@ -45,14 +45,16 @@ Back-end
 - Fix Home Page
   - Decide whether to move Header.js to be rendered in App.js or in HomePage.js component
   - Fix the width of JobListings
-  - Make sure only maximum amount of JobListings in a row is 4
-  - Make JobListing card look better
-  - Style the View Job button
+  - ~~Make JobListing card look (a bit) better~~
+  - ~~Style the View Job button~~
+  - Make sure cards are fixed height and width
 - ~~Create Footer~~
   - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
 - Create Terms of Use, Privacy Policy, and Cookie Policy Pages
 - Fix JobListing (detailed) Page
 
+- ~~Chose color scheme and font~~
+- ~~Make sure only maximum amount of JobListings in a row is 3~~
 - ~~Created Basic Header~~
 - ~~Created Basic layout of job listings using flexbox~~
 - ~~Created Basic JobListing (detailed) page~~
