@@ -53,7 +53,9 @@ Back-end
   - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
 - Create Terms of Use, Privacy Policy, and Cookie Policy Pages
 - ~~Fix JobListing (detailed) Page~~
-- Create New Job Listing Page
+- ~~Create New Job Listing Page~~
+  - Fix price input field
+  - Sanitize Data
 
 - ~~Chose color scheme and font~~
 - ~~Make sure only maximum amount of JobListings in a row is 3~~

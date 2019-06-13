@@ -37,9 +37,7 @@ fieldset {
 }
 
 #CreateJobListing-form input[type="text"],
-#CreateJobListing-form input[type="email"],
-#CreateJobListing-form input[type="tel"],
-#CreateJobListing-form input[type="url"],
+#CreateJobListing-form input[type="number"],
 #CreateJobListing-form textarea {
   width: 100%;
   border: 1px solid #ccc;
@@ -87,7 +85,7 @@ fieldset {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.copyright {
+.cancel {
   text-align: center;
 }
 
