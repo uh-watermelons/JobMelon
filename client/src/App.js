@@ -22,9 +22,7 @@ class App extends Component {
 
     const homePage = 
         <div>
-        <Header />
         <HomePage jobs={jobs}/>
-        <Footer />
         </div>
         ;
 
@@ -37,8 +35,8 @@ class App extends Component {
 
     return (
       <div className="App">
-      {homePage}
       {listingPage}
+      {homePage}
       </div>
       );
   }

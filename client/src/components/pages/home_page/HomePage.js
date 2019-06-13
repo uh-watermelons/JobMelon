@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import JobListing from "./JobListing";
+import Header from '../../Header';
+import Footer from '../../Footer';
 
 
 class HomePage extends Component {
@@ -22,11 +24,12 @@ class HomePage extends Component {
       );
     return (
       <div className="HomePage">
+        <Header />
         <h1 className="homepage-header">Current Job Listings</h1>
       	<div className="job-listings-layout">
           { listings }
       	</div>
-
+        <Footer />
       </div>
       );
   }

@@ -171,33 +171,50 @@ a {
 
 }
 .listing {
-	margin-top: 50px;
-	margin-left: 200px;
-	margin-right: 200px;
-	display: flex;
+	font-family: 'Source Code Pro', monospace;
+	margin: 2em 15em;
+	display: grid;
+    grid-template-columns: 3fr 1fr;	
 }
 
 .listing-info {
-	padding-right: 100px;
-	flex: 1;
+	padding-right: 10em;
 }
 .listing-info > * {
 	padding: 10px;
 }
 
 .listing-contact {
-	width: 20%;
+	border-left:
+		solid
+		1px
+		#CCC;
+		padding: 2em;
 }
+.listing-contact > * {
 
+}
 .listing-contact > div > img {
 	max-width: 100%;
 }
 
 .listing-contact > .contact-btn {
+	/*
 	background-color: gray;
-	min-width: 100%;
-	padding: 20px;
-	font-size: 20px;
 	color: white;
-	border-radius: 10px;
+	*/
+ 	font-weight: 600;
+ 	text-align: center;
+ 	color: #FFF;
+ 	transition: all 0.2s;
+ 	background: #F35588;
+ 	margin-top: 1em;
+	padding: 20px;
+	min-width: 100%;
+	font-size: 20px;
+
+}
+
+.listing-contact > .contact-btn:hover {
+	background: #FFBBB4;
 }

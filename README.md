@@ -52,7 +52,7 @@ Back-end
 - ~~Create Footer~~
   - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
 - Create Terms of Use, Privacy Policy, and Cookie Policy Pages
-- Fix JobListing (detailed) Page
+- ~~Fix JobListing (detailed) Page~~
 
 - ~~Chose color scheme and font~~
 - ~~Make sure only maximum amount of JobListings in a row is 3~~
