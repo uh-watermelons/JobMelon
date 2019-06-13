@@ -23,7 +23,6 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <h1 className="homepage-header">Current Job Listings</h1>
-      	
       	<div className="job-listings-layout">
           { listings }
       	</div>

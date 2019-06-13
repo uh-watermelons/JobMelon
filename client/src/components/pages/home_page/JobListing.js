@@ -7,27 +7,34 @@ class JobListing extends Component {
   }
 
   render() {
+    const maxStringLength = 20;
+    let name = "";// = this.props.jobName || "Job Name";
+    if(this.props.jobName.length > maxStringLength) {
+      name = this.props.jobName.substring(0, 15) + "...";
+    } else {
+      name = this.props.jobName || "Job Name";
+    }
     const price = this.props.price || 0;
-    const name = this.props.jobName || "Job Name";
     //const picture = this.props.picture || "Profile Picture";
     const location = this.props.location || "Location";
     return (
       <div className="JobListing" >
-
-        <div>${ price }</div>
-        <div><h2>{ name }</h2></div>
-        <div>
-          <img src= { watermelon } 
-              alt="Default Picture"
-              style={{"width":"50px","height":"50px"}}/>
+        <div className="jobName"><h3>{ name }</h3></div>
+        <div className="description">
+          <h2 className="price">${ price }</h2>
+          <h5 className="location">{ location }</h5>
         </div>
-        <div>{ location }</div>
-        <button>View Job</button>
-
+        <div  className="picture">
+          <img
+          src={ watermelon }
+          alt="Default Picture"
+          style={{"width":"100%","height":"100%"}}
+          />
+        </div>
+        <a href="#" title="Button" className="button">View Job</a>
       </div>
       );
   }
 }
-
 
 export default JobListing;
