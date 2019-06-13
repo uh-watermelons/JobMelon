@@ -3,6 +3,7 @@ An online website for those in need of reliable contractors.
 
 ### Pending Tasks
 Front-end
+- Fix annoying default favicon
 - Create Home Page/Landing Page
   - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
 - Create Footer
