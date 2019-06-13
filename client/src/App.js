@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './components/pages/home_page/HomePage';
 import JobListingDetailed from './components/pages/job_listing_detailed_page/JobListingDetailed';
+import CreateJobListing from './components/pages/create_job_listing_page/CreateJobListing';
 import './App.css';
 
 
@@ -18,8 +19,6 @@ class App extends Component {
  
   render() {
 
-    console.log(jobs);
-
     const homePage = 
         <div>
         <HomePage jobs={jobs}/>
@@ -31,12 +30,18 @@ class App extends Component {
       <JobListingDetailed listing={ jobs[0] } />
       </div>
       ;
-
+      
+    const createJobListingPage =
+      <div>
+      <CreateJobListing />
+      </div>
+      ;
 
     return (
       <div className="App">
-      {listingPage}
+      {createJobListingPage}
       {homePage}
+      {listingPage}
       </div>
       );
   }
