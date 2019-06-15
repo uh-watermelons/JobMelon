@@ -4,11 +4,14 @@ import Footer from './components/Footer';
 import HomePage from './components/pages/home_page/HomePage';
 import JobListingDetailed from './components/pages/job_listing_detailed_page/JobListingDetailed';
 import CreateJobListing from './components/pages/create_job_listing_page/CreateJobListing';
+import Profile from './components/pages/profile_page/Profile';
 import './App.css';
 
 
 /* Import for dummy data */
-import { defaultData as jobs } from './temp/defaultData';
+import { listings as jobs } from './data/listings';
+import { users } from './data/users';
+
 
 class App extends Component {
 
@@ -37,8 +40,14 @@ class App extends Component {
       </div>
       ;
 
+    const profilePage = 
+      <div>
+      <Profile user={ users[0] }/>
+      </div>
+
     return (
       <div className="App">
+      {profilePage}
       {createJobListingPage}
       {homePage}
       {listingPage}

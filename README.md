@@ -4,6 +4,8 @@ An online website for those in need of reliable contractors.
 ### Pending Tasks
 Front-end
 - Fix annoying default favicon
+- Move stylesheets for components from App.css to individual stylesheets
+  - Example: HomePage stylings are in App.css, but make a HomePage.css file and move it there
 - Create Home Page/Landing Page
   - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
 - Create Footer
@@ -56,6 +58,8 @@ Back-end
 - ~~Create New Job Listing Page~~
   - Fix price input field
   - Sanitize Data
+- Create Profile Page
+  - Component that is rendered is based on whether user is a client or a contractor
 
 - ~~Chose color scheme and font~~
 - ~~Make sure only maximum amount of JobListings in a row is 3~~

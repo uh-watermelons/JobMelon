@@ -1,5 +1,5 @@
 /* Array of Job Listings for testing purposes */
- export const defaultData = [
+ export const listings = [
     {
       "price": 20.5,
       "jobName": "Lawn Mowing",
