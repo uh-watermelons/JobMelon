@@ -46,7 +46,7 @@ Back-end
 
 #### Jan
 - Fix Home Page
-  - Decide whether to move Header.js to be rendered in App.js or in HomePage.js component
+  - ~~Decide whether to move Header.js to be rendered in App.js or in HomePage.js component~~
   - Fix the width of JobListings
   - ~~Make JobListing card look (a bit) better~~
   - ~~Style the View Job button~~
@@ -58,8 +58,8 @@ Back-end
 - ~~Create New Job Listing Page~~
   - Fix price input field
   - Sanitize Data
-- Create Profile Page
-  - Component that is rendered is based on whether user is a client or a contractor
+- ~~Create Profile Page~~
+  - ~~Component that is rendered is based on whether user is a client or a contractor~~
 
 - ~~Chose color scheme and font~~
 - ~~Make sure only maximum amount of JobListings in a row is 3~~
@@ -88,3 +88,17 @@ Back-end
 ## IntelliJ Project Settings
 Make sure to enable EMCAscript 6 
 (Languages & Frameworks > JavaScript > JavaScript language version: ECMAScript 6)
+
+## Pages
+
+Home
+![Home](/images/homepage_v2.JPG)
+
+Detailed Job Listing
+![Detailed Job Listing](/images/JobListingDetailed_v2.JPG)
+
+Profile
+![Profile](/images/ProfilePage_v1.JPG)
+
+Create Listing
+![Create Job Listing](/images/CreateJobListing_v1.JPG)
