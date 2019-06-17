@@ -40,32 +40,37 @@ Back-end
 
  *__*Completed Tasks will be be ~~crossed through~~*__
 
+Updated 6/16/19
 #### Jack
-* ~~Create database~~
-* Finish README
+* ~~Create database~~ (6/10/19)
+* ~~Populate Database~~ (6/16/19)
+* Connect app to database
+* Create functions for messaging
+* Create functions for listing of jobs
+* Create function for processing payment
 
 #### Jan
 - Fix Home Page
   - ~~Decide whether to move Header.js to be rendered in App.js or in HomePage.js component~~
   - Fix the width of JobListings
-  - ~~Make JobListing card look (a bit) better~~
-  - ~~Style the View Job button~~
+  - ~~Make JobListing card look (a bit) better~~ (6/11/19)
+  - ~~Style the View Job button~~ (6/11/19)
   - Make sure cards are fixed height and width
-- ~~Create Footer~~
+- ~~Create Footer~~ (6/11/19)
   - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
 - Create Terms of Use, Privacy Policy, and Cookie Policy Pages
-- ~~Fix JobListing (detailed) Page~~
-- ~~Create New Job Listing Page~~
+- ~~Fix JobListing (detailed) Page~~ (6/11/19)
+- ~~Create New Job Listing Page~~ (6/11/19)
   - Fix price input field
   - Sanitize Data
-- ~~Create Profile Page~~
+- ~~Create Profile Page~~ (6/11/19)
   - ~~Component that is rendered is based on whether user is a client or a contractor~~
 
-- ~~Chose color scheme and font~~
+- ~~Chose color scheme and font~~ (6/11/19)
 - ~~Make sure only maximum amount of JobListings in a row is 3~~
-- ~~Created Basic Header~~
-- ~~Created Basic layout of job listings using flexbox~~
-- ~~Created Basic JobListing (detailed) page~~
+- ~~Created Basic Header~~ (6/12/19)
+- ~~Created Basic layout of job listings using flexbox~~ (6/12/19)
+- ~~Created Basic JobListing (detailed) page~~ (6/12/19)
 
 #### Leisha
 - Create Job Posting Page
@@ -74,9 +79,11 @@ Back-end
   - Clicking button to create job posting will prompt user to CONFIRM it
 
 #### Jon
-* ~~completed task 1 etc.~~
+* ?
 
-* assigned task 1 etc.
+***
+### Link to Project
+https://github.com/uh-watermelons/jobmelon
 
 ***
 
