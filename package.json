@@ -1,0 +1,45 @@
+{
+  "name": "node-http",
+  "version": "0.0.1",
+  "description": "Basic HTTP server built with native Node.js http module",
+  "scripts": {
+    "server": "cd server && node server.js",
+    "client": " cd client && npm run start"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/node-http"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch"
+  ],
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "url": "^0.11.0",
+    "concurrently": "^3.5.1",
+    "es6-promise": "^4.2.4",
+    "isomorphic-fetch": "^2.2.1",
+    "node-fetch": "^2.1.2",
+    "nodemon": "^1.17.4",
+    "react-router-dom": "^4.2.2",
+    "mongodb": "^3.2.7",
+    "redux-saga": "^0.16.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "eslint-plugin-react": "^7.8.2",
+    "module-alias": "2.0.6"
+  },
+  "_moduleAliases": {
+    "root": ".",
+    "routes": "./server/routes",
+    "server": "./server"
+  }
+}
