@@ -38,19 +38,53 @@ class CreateJobListing extends Component {
           <form id="CreateJobListing-form">
             <h3>Create Job Listing</h3>
             <fieldset>
-              <input name="jobName" value={ this.state.jobName } onChange={ this.handleChange } placeholder="Job Name" type="text" tabindex="1" required autofocus/>
+              <input 
+                name="jobName" 
+                value={ this.state.jobName } 
+                onChange={ this.handleChange } 
+                placeholder="Job Name" 
+                type="text" 
+                tabIndex="1" 
+                required
+                autoFocus/>
             </fieldset>
             <fieldset>
-              <input name="location" value={ this.state.location } onChange={ this.handleChange } placeholder="City and State" type="text" tabindex="2" required/>
+              <input 
+                name="location" 
+                value={ this.state.location } 
+                onChange={ this.handleChange } 
+                placeholder="City and State" 
+                type="text" 
+                tabIndex="2" 
+                required/>
             </fieldset>
             <fieldset>
-              <textarea name="description" value={ this.state.description } onChange={ this.handleChange } placeholder="Job Description" tabindex="3" required></textarea>
+              <textarea 
+                name="description" 
+                value={ this.state.description } 
+                onChange={ this.handleChange } 
+                placeholder="Job Description" 
+                tabIndex="3" 
+                required></textarea>
             </fieldset>
             <fieldset>
-              <input name="price" value={ this.state.price } onChange={ this.handleChange } placeholder="Price" type="text" tabindex="4" step="any" required autofocus/>
+              <input 
+                name="price" 
+                value={ this.state.price } 
+                onChange={ this.handleChange } 
+                placeholder="Price" 
+                type="text" 
+                tabIndex="4" 
+                step="any" 
+                required 
+                autoFocus/>
             </fieldset>
             <fieldset>
-              <button name="submit" type="submit" id="listing-submit" data-submit="...Sending">Post</button>
+              <button 
+                name="submit" 
+                type="submit" 
+                id="listing-submit" 
+                data-submit="...Sending">Post</button>
             </fieldset>
             <p className="cancel"><a href="#" title="Cancel">Cancel</a></p>
                   </form>
