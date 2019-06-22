@@ -9,6 +9,8 @@ import Login from './components/pages/login_page/Login';
 import Register from './components/pages/register_page/Register';
 import './App.css';
 
+/* Import React Router */
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 /* Import for dummy data */
 import { listings as jobs } from './data/listings';
@@ -24,48 +26,49 @@ class App extends Component {
  
   render() {
 
-    const homePage = 
+    const homePage = () =>
         <div>
         <HomePage jobs={jobs}/>
         </div>
         ;
 
-    const listingPage = 
+    const listingPage = () =>
       <div>
       <JobListingDetailed listing={ jobs[0] } />
       </div>
       ;
       
-    const createJobListingPage =
+    const createJobListingPage =() =>
       <div>
       <CreateJobListing />
       </div>
       ;
 
-    const profilePage = 
+    const profilePage = () =>
       <div>
       <Profile user={ users[0] }/>
       </div>
 
-    const loginPage =
+    const loginPage = () =>
       <div>
       <Login />
       </div>
 
-    const registerPage =
+    const registerPage = () =>
       <div>
       <Register />
       </div>
 
     return (
-      <div className="App">
-      {loginPage}
-      {registerPage}
-      {profilePage}
-      {createJobListingPage}
-      {homePage}
-      {listingPage}
-      </div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={homePage}/>
+          <Route exact path="/login" component={Login}/>
+          <Route exact path="/register" component={Register}/>
+          <Route exact path="/job" component={listingPage}/>
+          <Route exact path="/profile" component={profilePage}/>
+        </div>
+      </Router>
       );
   }
 }

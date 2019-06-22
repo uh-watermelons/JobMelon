@@ -3,6 +3,8 @@ import Header from '../../Header';
 import Footer from '../../Footer';
 import './Register.css'
 
+import { Link } from 'react-router-dom';
+
 class Register extends Component {
   constructor(props) {
     super(props);
@@ -72,22 +74,23 @@ class Register extends Component {
             </fieldset>
             <fieldset>
               <p>You will be a...</p>
-              <input value="client"
+              <input 
+                value="client"
                 checked={ this.state.role === "client" } 
                 onChange={ this.handleRadioChange } 
                 type="radio" 
                 name="role" 
-                value="client"/>Client
+                />Client
               <input 
                 value="contractor" 
                 checked={ this.state.role === "contractor" } 
                 onChange={ this.handleRadioChange }
                 type="radio" 
                 name="role" 
-                value="contractor"/>Contractor
+                />Contractor
             </fieldset>
             <button name="submit" type="submit" id="submit-register">Sign Up</button>
-            <p className="register">Have an account? <a href="#" title="login">Log In</a></p>
+            <p className="register">Have an account? <Link to="/login"><a title="login">Log In</a></Link></p>
           </form>
         </div>
         <Footer />
