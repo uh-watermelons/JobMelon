@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import watermelon from "../../../images/watermelon.svg";
+
 class JobListing extends Component {
 
   state = {

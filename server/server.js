@@ -15,14 +15,27 @@ app.get('/', (req, res) => {
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://melonadmin:PzbabQ1hS3taJCUZ@meloncluster-6odek.mongodb.net/test";
 const client = new MongoClient(uri, { useNewUrlParser: true });
-console.log("Created client");
+
 client.connect(err => {
   console.log("Connected to server");
-  const listings = client.db("jobmelon").collection("listings");
-  // Export listings variable to other files, can be used like this:
-  // const listingsModule = require('./listings');
-  // const listings = listingsModule.listings;
-  exports.listings = listings;
+  const db = client.db("jobmelon")
+  const listings = db.collection("listings");
+
+
+  //console.log(listings);
+
+  //Post all current jobs to currentjobs
+  app.post('/currentjobs', (req, res) => {
+     //const requestBody = req.body;
+
+    //res.send(listings);
+    listings.find({}).toArray(function(err, listing) {
+
+      console.log(JSON.stringify(listing, null, 2));
+      res.status(200).json({'listing' : joblistings});
+
+    })
+  })
 
   client.close();
 });

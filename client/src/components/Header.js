@@ -8,14 +8,14 @@ function Header(props) {
           <h1 className="header-item-1">
             JobMelon
           </h1>
-          <img src={ watermelon } 
+          <img src={ watermelon }
               alt="Watermelon Icon"/>
           <nav className="header-item-2">
-              <a href="#">Home</a>
-              <a href="#">Profile</a>
-              <a href="#">Messages</a>
-            	<a href="#">Log In</a>
-              <a href="#">Sign Up</a>
+              <a href="/">Home</a>
+              <a href="/profile">Profile</a>
+              <a href="/messages">Messages</a>
+            	<a href="/login">Log In</a>
+              <a href="/signup">Sign Up</a>
           </nav>
         </div>
       </header>
