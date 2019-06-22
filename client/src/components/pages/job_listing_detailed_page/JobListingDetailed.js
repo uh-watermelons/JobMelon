@@ -26,7 +26,7 @@ class JobListingDetailed extends Component {
         <Header />
         <div className="listing">
           <div className="listing-info">
-            <h1 style={{"border-bottom":"solid 1px #CCC"}}>{ name }</h1>
+            <h1 style={{"borderBottom":"solid 1px #CCC"}}>{ name }</h1>
             <h3>{ location }</h3>
             <h2>${ price }</h2>
             <p>{ description }</p>

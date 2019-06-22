@@ -5,6 +5,8 @@ import HomePage from './components/pages/home_page/HomePage';
 import JobListingDetailed from './components/pages/job_listing_detailed_page/JobListingDetailed';
 import CreateJobListing from './components/pages/create_job_listing_page/CreateJobListing';
 import Profile from './components/pages/profile_page/Profile';
+import Login from './components/pages/login_page/Login';
+import Register from './components/pages/register_page/Register';
 import './App.css';
 
 
@@ -45,8 +47,20 @@ class App extends Component {
       <Profile user={ users[0] }/>
       </div>
 
+    const loginPage =
+      <div>
+      <Login />
+      </div>
+
+    const registerPage =
+      <div>
+      <Register />
+      </div>
+
     return (
       <div className="App">
+      {loginPage}
+      {registerPage}
       {profilePage}
       {createJobListingPage}
       {homePage}

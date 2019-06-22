@@ -1,3 +1,4 @@
+ /*
  const MongoClient = require('mongodb').MongoClient;
  const uri = "mongodb+srv://melonadmin:PzbabQ1hS3taJCUZ@meloncluster-6odek.mongodb.net/test";
  const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -12,10 +13,9 @@
 
      client.close();
  });
-
+*/
 
 /* Array of Job Listings for testing purposes */
-/*
 
   export const listings = [
      {
@@ -109,4 +109,4 @@
       "location": "Honolulu, HI",
        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
      },
-   ];*/
+   ];
