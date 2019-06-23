@@ -21,21 +21,21 @@ class HomePage extends Component {
     fetch('/currentjobs')
     .then(res => res.json())
     .then(data => {
-      this.setState({ listings: data})
-    })
+      //this.state.listings = data;
+
+      const jobs = data.data;
+      this.state.listings = jobs.map((listing) =>
+          <JobListing
+              jobName={ listing.jobName }
+              price={ listing.price }
+              //picture={ listing.picture }
+              location={ listing.cityName}
+          />
+      );
+    });
   }
 
   render() {
-
-    const jobs = this.props.jobs;
-    this.state.listings = jobs.map((listing) =>
-      <JobListing
-      jobName={ listing.jobName }
-      price={ listing.price }
-      picture={ listing.picture }
-      location={ listing.location}
-      />
-      );
 
     return (
       <div className="HomePage">
