@@ -22,7 +22,8 @@ class HomePage extends Component {
     .then(res => res.json())
     .then(data => {
       //this.state.listings = data;
-
+      console.log(data);
+      console.log("testing");
       const jobs = data.data;
       this.state.listings = jobs.map((listing) =>
           <JobListing
