@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import JobListing from "./JobListing";
 import Header from '../../Header';
 import Footer from '../../Footer';
-
+import axios from 'axios';
 class HomePage extends Component {
 
 //   state = {
@@ -12,27 +12,40 @@ class HomePage extends Component {
     super(props);
 
     this.state = ({
-      listings: ''
+      listings: []
     })
   }
 
+  getDatabase = () => {
+    //axios.get('/currentjobs')
+    fetch('/currentjobs')
+    .then(res => {
+      console.log(res.data);
+      this.setState({listings: res.data})
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
   // Grab listings from Mongo
   componentDidMount() {
-    fetch('/currentjobs')
-    .then(res => res.json())
-    .then(data => {
-      //this.state.listings = data;
+    
+    // .then(res => res.json())
+    // .then(data => {
+    //   //this.state.listings = data;
 
-      const jobs = data.data;
-      this.state.listings = jobs.map((listing) =>
-          <JobListing
-              jobName={ listing.jobName }
-              price={ listing.price }
-              //picture={ listing.picture }
-              location={ listing.cityName}
-          />
-      );
-    });
+    //   const jobs = data.data;
+    //   this.state.listings = jobs.map((listing) =>
+    //       <JobListing
+    //           jobName={ listing.jobName }
+    //           price={ listing.price }
+    //           //picture={ listing.picture }
+    //           location={ listing.cityName}
+    //       />
+    //   );
+    // });
+    this.getDatabase();
+    console.log(this.state);
   }
 
   render() {
@@ -42,12 +55,17 @@ class HomePage extends Component {
         <Header />
         <h1 className="homepage-header">Current Job Listings</h1>
       	<div className="job-listings-layout">
-          { this.state.listings }
-      	</div>
+      	<Listings data={this.listings}/>
+        </div>
         <Footer />
       </div>
       );
   }
+}
+
+const Listings = (props) => {
+  console.log(props.data);
+  return (<div>Hello</div>);
 }
 
 export default HomePage;
