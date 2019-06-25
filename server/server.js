@@ -1,14 +1,44 @@
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-const db = require("./mongo");
 const app = express();
-const port = 5000;
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// const db = require("./mongo");
+// const port = 5000;
+
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+   })
+  );
+app.use(bodyParser.json());
+
 // This allows cross-origin resource sharing to make HTTP requests
 app.use(cors({credentials: true, origin: true}));
+
+// DB Config
+const db = require("./config/keys").mongoURI;
+
+// Connect to MongoDB (using mongoose)
+mongoose
+  .connect(
+      db,
+      { useNewUrlParser: true }
+    )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
+
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => console.log(`We're up on PORT:${port}. CHEEHOO!`));
+
+
+
+//app.use(express.urlencoded({ extended: true }));
+//app.use(express.json());
 // Import Routes directory
 require('./routes')(app);
 
@@ -16,29 +46,29 @@ app.get('/', (req, res) => {
   res.send('PORT 5000');
 });
 
-app.get('/currentjobs', (req, res) => {
+// app.get('/currentjobs', (req, res) => {
 
-  db.getDB().collection("listings").find({}).toArray((err, listing) => {
-    if (err)
-      console.log(err);
-    else {
-      //console.log(JSON.stringify(listing, null, 2));
-      res.json(listing);
-      console.log(res);
-    }
-  });
+//   db.getDB().collection("listings").find({}).toArray((err, listing) => {
+//     if (err)
+//       console.log(err);
+//     else {
+//       //console.log(JSON.stringify(listing, null, 2));
+//       res.json(listing);
+//       console.log(res);
+//     }
+//   });
 
-});
+// });
 
 
-db.connect(err => {
-    app.listen(port, (err) => {
-      if (err) { console.log(err); };
-      console.log('Listening on port ' + port);
-    });
+// db.connect(err => {
+//     app.listen(port, (err) => {
+//       if (err) { console.log(err); };
+//       console.log('Listening on port ' + port);
+//     });
 
-    //db.close();
+//     //db.close();
 
-});
+// });
 
 

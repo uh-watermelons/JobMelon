@@ -4,8 +4,9 @@
   "description": "Basic HTTP server built with native Node.js http module",
   "scripts": {
     "server": "cd server && node server.js",
+    "server-dev": "cd server && nodemon server.js",
     "client": " cd client && npm run start",
-    "dev": "concurrently  \"npm run server\" \"npm run client\" "
+    "dev": "concurrently  \"npm run server-dev\" \"npm run client\" "
   },
   "engines": {
     "node": "10.x"
