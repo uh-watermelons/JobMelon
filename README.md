@@ -26,27 +26,30 @@ Front-end
 Back-end
 - Populate database
     - Connect app to database
-- Create functions for messaging
 - Create functions for listing job
 - Create function for processing payment
-- Create routes for:
+- Create secure routes for:
   - Home Page
   - Logging/Signing in
   - Messages
   - Profile Page
   - Job Listing Page
+- Implement authentication
+- Implement session management
+- Implement access control
 
---- 
+---
 
- *__*Completed Tasks will be be ~~crossed through~~*__
+ *__*Completed Tasks will be be ~~crossed through~~*__*
 
-Updated 6/16/19
+Updated 6/24/19
 #### Jack
 * ~~Create database~~ (6/10/19)
 * ~~Populate Database~~ (6/16/19)
-* Connect app to database
-* Create functions for messaging
-* Create functions for listing of jobs
+* ~~Connect app to database~~ (6/20/19)
+* ~~Work on routing~~ (6/21/19)
+* ~~Use Iroh for dynamic analysis~~ (6/23/19)
+* Create functions for listing of jobs (nearly complete, just need to fix front-end rendering)
 * Create function for processing payment
 
 #### Jan
@@ -93,7 +96,7 @@ https://github.com/uh-watermelons/jobmelon
 * to run app: `npm start`
 
 ## IntelliJ Project Settings
-Make sure to enable EMCAscript 6 
+Make sure to enable EMCAscript 6
 (Languages & Frameworks > JavaScript > JavaScript language version: ECMAScript 6)
 
 ## Pages
