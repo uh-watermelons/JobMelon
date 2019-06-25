@@ -21,7 +21,17 @@ class HomePage extends Component {
     fetch('/currentjobs')
     .then(res => {
       console.log(res.data);
-      this.setState({listings: res.data})
+      //this.setState({listings: res.data})
+      this.setState({
+        listings: res.data.map((listing) =>
+            <JobListing
+                jobName={listing.jobName}
+                price={listing.price}
+                //picture={ listing.picture }
+                location={listing.cityName}
+            />
+        )
+      });
     })
     .catch(err => {
       console.log(err);
@@ -45,7 +55,9 @@ class HomePage extends Component {
     //   );
     // });
     this.getDatabase();
+    console.log("Testing getDB!");
     console.log(this.state);
+    console.log("Testing getDB!!");
   }
 
   render() {
@@ -64,7 +76,9 @@ class HomePage extends Component {
 }
 
 const Listings = (props) => {
+  console.log("Testing!");
   console.log(props.data);
+  console.log("Testing!!");
   return (<div>Hello</div>);
 }
 

@@ -23,6 +23,7 @@ app.get('/currentjobs', (req, res) => {
       console.log(err);
     else {
       //console.log(JSON.stringify(listing, null, 2));
+      //console.log("Test");
       res.json(listing);
       console.log(res);
     }
