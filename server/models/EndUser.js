@@ -29,7 +29,8 @@ const EndUserSchema = new Schema({
 			required: true,
 			default: true
 		}
-	}
+	},
+	
 	ccNumber: Number,
 	ccSecurityCode: Number,
 	ccExpiryDate: String,
