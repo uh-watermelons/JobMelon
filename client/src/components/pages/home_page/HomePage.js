@@ -2,38 +2,70 @@ import React, { Component } from 'react';
 import JobListing from "./JobListing";
 import Header from '../../Header';
 import Footer from '../../Footer';
-
-
+import axios from 'axios';
 class HomePage extends Component {
 
-  state = {
+//   state = {
+// // add profile here?
+//   }
+  constructor(props) {
+    super(props);
 
+    this.state = ({
+      listings: []
+    })
   }
 
+  getDatabase = () => {
+    // Use axios to make HTTP request
+    axios.get('/currentjobs')
+    .then(res => {
+      console.log(res.data);
+      this.setState({listings: res.data})
+    })
+    .catch(err => {
+      console.log(err);
+    });
+  }
+  // Grab listings from Mongo
+  componentDidMount() {
+
+    // .then(res => res.json())
+    // .then(data => {
+    //   //this.state.listings = data;
+
+    //   const jobs = data.data;
+    //   this.state.listings = jobs.map((listing) =>
+    //       <JobListing
+    //           jobName={ listing.jobName }
+    //           price={ listing.price }
+    //           //picture={ listing.picture }
+    //           location={ listing.cityName}
+    //       />
+    //   );
+    // });
+    this.getDatabase();
+    console.log(this.state);
+  }
 
   render() {
 
-    const jobs = this.props.jobs;
-    const listings = jobs.map((listing) =>
-      <JobListing 
-      jobName={ listing.jobName }
-      price={ listing.price }
-      picture={ listing.picture }
-      location={ listing.location}
-      />
-      );
     return (
       <div className="HomePage">
         <Header />
         <h1 className="homepage-header">Current Job Listings</h1>
       	<div className="job-listings-layout">
-          { listings }
-      	</div>
+      	<Listings data={this.listings}/>
+        </div>
         <Footer />
       </div>
       );
   }
 }
 
+const Listings = (props) => {
+  console.log(props.data);
+  return (<div>Hello</div>);
+}
 
 export default HomePage;

@@ -1,0 +1,56 @@
+{
+  "name": "node-http",
+  "version": "0.0.1",
+  "description": "Basic HTTP server built with native Node.js http module",
+  "scripts": {
+    "server": "cd server && node server.js",
+    "server-dev": "cd server && nodemon server.js",
+    "client": " cd client && npm run start",
+    "dev": "concurrently  \"npm run server-dev\" \"npm run client\" "
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/node-http"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch"
+  ],
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "concurrently": "^3.6.1",
+    "cors": "^2.8.5",
+    "es6-promise": "^4.2.4",
+    "express": "^4.17.1",
+    "is-empty": "^1.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.2.7",
+    "mongoose": "^5.6.1",
+    "node-fetch": "^2.1.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "path": "^0.12.7",
+    "react-router-dom": "^4.2.2",
+    "redux-saga": "^0.16.0",
+    "url": "^0.11.0",
+    "validator": "^11.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "eslint-plugin-react": "^7.8.2",
+    "module-alias": "2.0.6",
+    "nodemon": "^1.19.1"
+  },
+  "_moduleAliases": {
+    "root": ".",
+    "routes": "./server/routes",
+    "server": "./server"
+  }
+}

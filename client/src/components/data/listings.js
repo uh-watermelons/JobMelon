@@ -1,21 +1,5 @@
- /*
- const MongoClient = require('mongodb').MongoClient;
- const uri = "mongodb+srv://melonadmin:PzbabQ1hS3taJCUZ@meloncluster-6odek.mongodb.net/test";
- const client = new MongoClient(uri, { useNewUrlParser: true });
- console.log("Created client");
- client.connect(err => {
-     console.log("Connected to server");
-     const listings = client.db("jobmelon").collection("listings");
-     // Export listings variable to other files, can be used like this:
-     // const listingsModule = require('./listings');
-     // const listings = listingsModule.listings;
-     exports.listings = listings;
-
-     client.close();
- });
-*/
-
 /* Array of Job Listings for testing purposes */
+
 
   export const listings = [
      {
