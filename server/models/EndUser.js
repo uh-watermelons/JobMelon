@@ -8,7 +8,8 @@ const EndUserSchema = new Schema({
 	},
 	lastName: {
 		type: String,
-		required: false
+		required: false,
+		default: ""
 	},
 	email: {
 		type: String,
@@ -19,23 +20,23 @@ const EndUserSchema = new Schema({
 		required: true
 	},
 	role: {
-		client: {
-			type: Boolean,
-			required: true,
-			default: false
-		},
-		contractor: {
-			type: Boolean,
-			required: true,
-			default: true
-		}
+		type: String,
+		required: true,
+		default: "contractor"
 	},
-	
-	ccNumber: Number,
-	ccSecurityCode: Number,
-	ccExpiryDate: String,
 
-	admin: Boolean,
+	ccNumber: {
+		type: Number,
+		default: 0
+	},
+	ccSecurityCode: { 
+		type: Number,
+		default: 0
+	},
+	ccExpiryDate: { 
+		type: String,
+		default: ""
+	},
 	date: {
 		type: Date,
 		default: Date.now
