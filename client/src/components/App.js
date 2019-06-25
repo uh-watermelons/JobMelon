@@ -18,6 +18,8 @@ import { listings as jobs } from './data/listings';
 import { users } from './data/users';
 
 
+
+
 class App extends Component {
 
   state = {
@@ -38,7 +40,7 @@ class App extends Component {
       <JobListingDetailed listing={ jobs[0] } />
       </div>
       ;
-      
+
     const createJobListingPage =() =>
       <div>
       <CreateJobListing />
@@ -74,5 +76,6 @@ class App extends Component {
   }
 }
 
-
 export default App;
+
+
