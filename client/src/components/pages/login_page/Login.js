@@ -3,6 +3,8 @@ import Header from '../../Header';
 import Footer from '../../Footer';
 import './Login.css'
 
+import { Link } from 'react-router-dom';
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +57,7 @@ class Login extends Component {
                 required/>
             </fieldset>
             <button name="submit" type="submit" id="submit-login" data-submit="...Sending">Sign In</button>
-            <p className="register">Don't have an account? <a href="#" title="register">Register</a></p>
+            <p className="register">Don't have an account? <Link to="/register"><a title="register">Register</a></Link></p>
           </form>
         </div>
         <Footer />
@@ -63,6 +65,4 @@ class Login extends Component {
       );
   }
 }
-
-
 export default Login;

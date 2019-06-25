@@ -1,10 +1,9 @@
-
 .Register-container {
-	background-color: #CCC;
-	max-width: 400px;
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
+  background-color: #CCC;
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 #Register-form {

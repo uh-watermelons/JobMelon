@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import watermelon from '../images/watermelon.svg';
+import { Link } from 'react-router-dom';
 
-function Header(props) {
-    return (
-      <header className="Header">
-        <div className="header-layout">
-          <h1 className="header-item-1">
-            JobMelon
-          </h1>
-          <img src={ watermelon }
-              alt="Watermelon Icon"/>
-          <nav className="header-item-2">
-              <a href="/">Home</a>
-              <a href="/profile">Profile</a>
-              <a href="/messages">Messages</a>
-            	<a href="/login">Log In</a>
-              <a href="/signup">Sign Up</a>
-          </nav>
-        </div>
-      </header>
-      );
+class Header extends Component {
+    
+    state = {
+
+    }
+    render() {
+      const style = {
+        color: 'white'
+      }
+
+      return (
+        <header className="Header">
+          <div className="header-layout">
+            <Link style={style} to="/"><h1 className="header-item-1">
+              JobMelon
+            </h1>
+            </Link>
+            <img src={ watermelon } 
+                alt="Watermelon Icon"/>
+            <nav className="header-item-2">
+                <Link style={style} to="/"><a>Home</a></Link>
+                <Link style={style} to="/profile"><a>Profile</a></Link>
+                <Link style={style} to="/"><a>Messages</a></Link>
+                <Link style={style} to="/login"><a>Log In</a></Link>
+                <Link style={style} to="/register"><a>Sign Up</a></Link>
+            </nav>
+          </div>
+        </header>
+      );      
+    }
   }
 
 
