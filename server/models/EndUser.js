@@ -19,13 +19,22 @@ const EndUserSchema = new Schema({
 		required: true
 	},
 	role: {
-		client: Boolean,
-		contractor: Boolean
+		client: {
+			type: Boolean,
+			required: true,
+			default: false
+		},
+		contractor: {
+			type: Boolean,
+			required: true,
+			default: true
+		}
 	}
 	ccNumber: Number,
 	ccSecurityCode: Number,
 	ccExpiryDate: String,
 
+	admin: Boolean,
 	date: {
 		type: Date,
 		default: Date.now

@@ -39,7 +39,7 @@ app.listen(port, () => console.log(`We're up on PORT:${port}. CHEEHOO!`));
 //app.use(express.urlencoded({ extended: true }));
 //app.use(express.json());
 // Import Routes directory
-require('./routes')(app);
+//require('./routes')(app);
 
 app.get('/', (req, res) => {
   res.send('PORT 5000');
