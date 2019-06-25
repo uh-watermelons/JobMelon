@@ -17,8 +17,8 @@ class HomePage extends Component {
   }
 
   getDatabase = () => {
-    //axios.get('/currentjobs')
-    fetch('/currentjobs')
+    // Use axios to make HTTP request
+    axios.get('/currentjobs')
     .then(res => {
       console.log(res.data);
       this.setState({listings: res.data})
