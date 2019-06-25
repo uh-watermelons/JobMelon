@@ -6,10 +6,7 @@ Front-end
 - Fix annoying default favicon
 - Move stylesheets for components from App.css to individual stylesheets
   - Example: HomePage stylings are in App.css, but make a HomePage.css file and move it there
-- Create Home Page/Landing Page
-  - Home page will have listing of jobs in tile format with minimal information (Job name, poster profile (name and picture), price, location)
-- Create Footer
-  - Create links for "Contact Us", "Terms of Use", "Privacy Policy", and "Cookie Policy"
+
 - Create Terms of Use, Privacy Policy, and Cookie Policy Pages
 - Create Messages Page
   - On each job page, user can message job poster
@@ -17,11 +14,7 @@ Front-end
 - Create Job Posting Page
   - Jobs will have Name, Price, Description, Location
 - Create administration pages (allow administrator to remove job posting, users, etc.)
-- Create Log In/Sign Up Page
-- Create Profile Page
-  - Edit button will allow user to submit form to edit page
-  - Information will include: name, number, payment info, and current Job Listings (client/contractor)
-  - For clients - Create Add new job offer
+
 
 Back-end
 - Populate database
@@ -74,7 +67,17 @@ Updated 6/24/19
 - ~~Created Basic Header~~ (6/12/19)
 - ~~Created Basic layout of job listings using flexbox~~ (6/12/19)
 - ~~Created Basic JobListing (detailed) page~~ (6/12/19)
-
+- ~~Create Log In/Sign Up Page~~ (6/24/2019)
+- ~~Create Profile Page~~ (6/24/2019)
+  - ~~Edit button will allow user to submit form to edit page~~ (6/24/2019)
+  - ~~Information will include: name, number, payment info, and current Job Listings (client/contractor)~~ (6/24/2019)
+  - ~~For clients - Create Add new job offer~~ (6/24/2019)
+- ~~Implemnt authorization using JWT~~ (6/24/2019)
+- Create API routes for:
+ - Individual Job Listing pages
+ - Contacting clients
+ - Updating user information
+ 
 #### Leisha
 - Create Job Posting Page
   - Jobs will have Name, Price, Description, Location
