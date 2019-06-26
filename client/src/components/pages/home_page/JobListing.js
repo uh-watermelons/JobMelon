@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import watermelon from "../../../images/watermelon.svg";
+import { Link } from 'react-router-dom';
 
 class JobListing extends Component {
 
@@ -28,11 +29,11 @@ class JobListing extends Component {
         <div  className="picture">
           <img
           src={ watermelon }
-          alt="Default Picture"
+          alt="Default"
           style={{"width":"100%","height":"100%"}}
           />
         </div>
-        <a href="#" title="Button" className="button">View Job</a>
+        <Link className="button" to="/job">View Job</Link>
       </div>
       );
   }

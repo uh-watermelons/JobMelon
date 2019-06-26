@@ -3,11 +3,9 @@ import JobListing from "./JobListing";
 import Header from '../../Header';
 import Footer from '../../Footer';
 import axios from 'axios';
+
 class HomePage extends Component {
 
-//   state = {
-// // add profile here?
-//   }
   constructor(props) {
     super(props);
 
@@ -29,21 +27,6 @@ class HomePage extends Component {
   }
   // Grab listings from Mongo
   componentDidMount() {
-
-    // .then(res => res.json())
-    // .then(data => {
-    //   //this.state.listings = data;
-
-    //   const jobs = data.data;
-    //   this.state.listings = jobs.map((listing) =>
-    //       <JobListing
-    //           jobName={ listing.jobName }
-    //           price={ listing.price }
-    //           //picture={ listing.picture }
-    //           location={ listing.cityName}
-    //       />
-    //   );
-    // });
     this.getDatabase();
     console.log(this.state);
   }

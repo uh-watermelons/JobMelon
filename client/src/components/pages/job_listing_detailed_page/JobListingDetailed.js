@@ -4,13 +4,7 @@ import Footer from '../../Footer';
 import watermelon from '../../../images/watermelon.svg';
 
 class JobListingDetailed extends Component {
-  /* Data:
-      price,
-      jobName,
-      location
-      description,
-      location,
-  */
+
   state = {
 
   }
@@ -33,7 +27,7 @@ class JobListingDetailed extends Component {
           </div>
           <div className="listing-contact">
               <div>
-                <img src={ watermelon }/>
+                <img alt="default" src={ watermelon }/>
               </div>
               <button className="contact-btn" href="#">Message</button>
           </div>

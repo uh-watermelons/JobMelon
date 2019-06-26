@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
+import { Link } from 'react-router-dom';
 import './CreateJobListing.css'
 
 class CreateJobListing extends Component {
@@ -86,7 +87,7 @@ class CreateJobListing extends Component {
                 id="listing-submit" 
                 data-submit="...Sending">Post</button>
             </fieldset>
-            <p className="cancel"><a href="#" title="Cancel">Cancel</a></p>
+            <p className="cancel"><Link to="/profile">Cancel</Link></p>
                   </form>
         </div>
         <Footer />

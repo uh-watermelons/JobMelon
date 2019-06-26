@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Footer from './Footer';
 import HomePage from './pages/home_page/HomePage';
 import JobListingDetailed from './pages/job_listing_detailed_page/JobListingDetailed';
 import CreateJobListing from './pages/create_job_listing_page/CreateJobListing';
@@ -41,26 +39,17 @@ class App extends Component {
       </div>
       ;
 
-    const createJobListingPage =() =>
-      <div>
-      <CreateJobListing />
-      </div>
-      ;
-
     const profilePage = () =>
       <div>
       <Profile user={ users[0] }/>
       </div>
 
-    const loginPage = () =>
+    const createJobPage = () =>
       <div>
-      <Login />
+      <CreateJobListing />
       </div>
 
-    const registerPage = () =>
-      <div>
-      <Register />
-      </div>
+
 
     return (
       <Router>
@@ -70,6 +59,7 @@ class App extends Component {
           <Route exact path="/register" component={Register}/>
           <Route exact path="/job" component={listingPage}/>
           <Route exact path="/profile" component={profilePage}/>
+          <Route exact path="/createjob" component={createJobPage}/>
         </div>
       </Router>
     );

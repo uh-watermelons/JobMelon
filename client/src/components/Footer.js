@@ -4,7 +4,7 @@ function Footer(props) {
     return (
     	<footer className="Footer">
 			<p>Copyright © 2019 Team Watermelon All rights reserved.</p>
-		  	<a>Contact Us</a>
+		  	<p>Contact Us</p>
 		  	<p>Terms of Use</p>
 		  	<p> Privacy Policy</p>
 		  	<p>Cookie Policy</p>

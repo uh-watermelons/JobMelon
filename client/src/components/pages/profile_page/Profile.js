@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
+import CreateJobListing from '../create_job_listing_page/CreateJobListing';
+
+import { Link } from 'react-router-dom';
 import './Profile.css';
 
 class Profile extends Component {
@@ -22,7 +25,7 @@ class Profile extends Component {
           <ProfileInformation name={ user.name } number={ user.number }/> 
           <h2 className="listings-header">My current job listings</h2>
           <CurrentListings listings={ user.listings }/>
-          <button className="btn create">Add new job offer</button>
+          <Link to="/createjob" className="btn create">Add new job offer</Link>
         </div>
         <Footer />
       </div>
@@ -52,10 +55,7 @@ function ProfileInformation(props) {
 function CurrentListings(props) {
   const { listings } = props; // 
   return listings
-    .map
-    (listing => 
-      <Listing price={listing.price} jobName={listing.jobName}/>
-      );
+    .map(listing => <Listing price={listing.price} jobName={listing.jobName}/>);
 }
 
 function Listing(props) {
