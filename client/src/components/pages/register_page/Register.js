@@ -3,7 +3,11 @@ import Header from '../../Header';
 import Footer from '../../Footer';
 import './Register.css'
 
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { registerUser } from '../../../actions/authActions';
+
 
 class Register extends Component {
   constructor(props) {
@@ -16,7 +20,14 @@ class Register extends Component {
       errors: '',
       role: 'client'
     };
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
   }
 
   handleChange = (event) => {
@@ -44,8 +55,10 @@ class Register extends Component {
       role: this.state.role
     };
 
-        
+    // Registers users!
+    this.props.registerUser(newUser, this.props.history);
   }
+
 
   render() {
       const { errors } = this.state;
@@ -125,5 +138,18 @@ class Register extends Component {
   }
 }
 
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
 
-export default Register;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+  )(withRouter(Register));

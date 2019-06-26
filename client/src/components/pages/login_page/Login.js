@@ -4,16 +4,31 @@ import Footer from '../../Footer';
 import './Login.css'
 
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginUser } from '../../../actions/authActions';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       email: '',
       password: '',
       errors: {}
     };
 
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.auth.isAuthenticated) {
+      this.props.history.push('/'); // Redirect to Home upon logging in
+    }
+    if(nextProps.errors) {
+      console.log(this.state.errors);
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
   }
 
   handleChange = (event) => {
@@ -30,7 +45,11 @@ class Login extends Component {
     const userData = {
       email: this.state.email,
       password: this.state.password
-    }
+    };
+    // Log user in!
+    this.props.loginUser(userData);
+    // We don't pass in the history (as opposed to Register.js)
+    // Because we redirect through our component
   }
 
   render() {
@@ -72,4 +91,19 @@ class Login extends Component {
       );
   }
 }
-export default Login;
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
