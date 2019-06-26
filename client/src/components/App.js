@@ -6,6 +6,9 @@ import Profile from './pages/profile_page/Profile';
 import Register from './pages/register_page/Register';
 import Login from './pages/login_page/Login';
 
+import { Provider } from 'react-redux';
+import store from '../store';
+
 import './App.css';
 
 /* Import React Router */
@@ -52,6 +55,7 @@ class App extends Component {
 
 
     return (
+    <Provider store={store}>
       <Router>
         <div className="App">
           <Route exact path="/" component={homePage}/>
@@ -62,6 +66,7 @@ class App extends Component {
           <Route exact path="/createjob" component={createJobPage}/>
         </div>
       </Router>
+    </Provider>
     );
   }
 }
