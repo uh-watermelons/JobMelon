@@ -25,36 +25,50 @@ a {
 ************************/
 
 .Header {
-	padding: 20px;
 	/* background-color: #2acc60; - original color */
 	background-color: #71A95A;
 	color: white;
-	height: 100px;
 	font-family: 'Source Code Pro', monospace;
 }
 
 .header-layout {
+	display: flex;
+	padding: 1em;
 }
 
 .header-item-1 {
-
+	padding-left: 15px;
 }
 
-.header-layout > img {
+#logo {
 	padding: 0;
 	margin: 0;
 	width: 50px;
 	height: 50px;
 
 }
+/*.header-item-1 > img {
+	padding: 0;
+	margin: 0;
+	width: 50px;
+	height: 50px;
+}
+*/
+/*.header-layout > img {
+	padding: 0;
+	margin: 0;
+	width: 50px;
+	height: 50px;
+
+}*/
 
 .header-item-2 {
-	float: right;
+	display: flex;
+	flex-grow: 2;
 }
 .header-item-2 > a {
-	padding: 5px;
+	padding: 0.5em;
 }
-
 
 /*************************
  
