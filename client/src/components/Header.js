@@ -34,20 +34,17 @@ class Header extends Component {
                 src={ watermelon } 
                 alt="Watermelon Icon"/>
             <nav className="header-item-2">
-                <Link style={style} to="/">Home</Link>
-                <Link style={style} to="/profile">Profile</Link>
+                <Link style={{order: 5, color:'white'}} to="/">Home</Link>
+                <Link style={{order: 4, color:'white'}} to="/profile">Profile</Link>
                 <LogoutButton 
                   isAuthenticated={this.props.auth.isAuthenticated}
                   action={this.onLogoutClick}
-                  style={style} 
                 />
                 <LoginButton 
                   isAuthenticated={this.props.auth.isAuthenticated}
-                  style={style} 
                 />
                 <RegisterButton 
                   isAuthenticated={this.props.auth.isAuthenticated}
-                  style={style} 
                 />
             </nav>
           </div>
@@ -59,17 +56,17 @@ class Header extends Component {
 // These are used to render either "Log Out" or "Log In / Sign Up"
 const LogoutButton = props => (
   props.isAuthenticated 
-  ? <Link onClick={props.action} style={props.style}>Log Out</Link>
+  ? <Link onClick={props.action} style={{order: 3, color:'white'}}>Log Out</Link>
   : null
 );
 const LoginButton = props => (
   !props.isAuthenticated 
-  ? <Link style={props.style} to="/login">Log In</Link>
+  ? <Link style={{order: 2, color:'white'}} to="/login">Log In</Link>
   : null
 );
 const RegisterButton = props => (
   !props.isAuthenticated 
-  ? <Link style={props.style} to="/register">Sign Up</Link>
+  ? <Link style={{order: 1, color:'white'}} to="/register">Sign Up</Link>
   : null
 );
 
