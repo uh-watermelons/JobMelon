@@ -11,6 +11,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
+      errors: {}
     };
 
   }
@@ -25,15 +26,22 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    // TO-DO
+    
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
+    }
+    console.log(userData);
   }
 
   render() {
+      const { errors } = this.state;
+
       return (
       <div className="Login">
         <Header />
         <div className="Login-container">
-          <form id="Login-form">
+          <form noValidate onSubmit={this.handleSubmit} id="Login-form">
             <h3>Log In</h3>
             <fieldset>
               <input 
@@ -41,7 +49,7 @@ class Login extends Component {
                 value={ this.state.email } 
                 onChange={ this.handleChange } 
                 placeholder="Email" 
-                type="text" 
+                type="email" 
                 tabIndex="1" 
                 required 
                 autoFocus/>
@@ -52,12 +60,12 @@ class Login extends Component {
                 value={ this.state.password } 
                 onChange={ this.handleChange } 
                 placeholder="Password" 
-                type="text" 
+                type="password" 
                 tabIndex="2" 
                 required/>
             </fieldset>
             <button name="submit" type="submit" id="submit-login" data-submit="...Sending">Sign In</button>
-            <p className="register">Don't have an account? <Link to="/register"><a title="register">Register</a></Link></p>
+            <p className="register">Don't have an account? <Link to="/register">Register</Link></p>
           </form>
         </div>
         <Footer />

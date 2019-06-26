@@ -36,7 +36,8 @@ fieldset {
 }
 
 #Register-form input[type="text"],
-#Register-form input[type="number"],
+#Register-form input[type="email"],
+#Register-form input[type="password"],
 #Register-form textarea {
   width: 100%;
   border: 1px solid #ccc;
@@ -47,6 +48,8 @@ fieldset {
 
 #Register-form input[type="text"]:hover,
 #Register-form input[type="email"]:hover,
+#Register-form input[type="password"]:hover,
+#Register-form input[type="radio"]:hover,
 #Register-form textarea:hover {
   -webkit-transition: border-color 0.3s ease-in-out;
   -moz-transition: border-color 0.3s ease-in-out;

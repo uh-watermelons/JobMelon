@@ -36,8 +36,8 @@ fieldset {
   width: 100%;
 }
 
-#Login-form input[type="text"],
-#Login-form input[type="number"],
+#Login-form input[type="email"],
+#Login-form input[type="password"],
 #Login-form textarea {
   width: 100%;
   border: 1px solid #ccc;
@@ -46,10 +46,8 @@ fieldset {
   padding: 10px;
 }
 
-#Login-form input[type="text"]:hover,
 #Login-form input[type="email"]:hover,
-#Login-form input[type="tel"]:hover,
-#Login-form input[type="url"]:hover,
+#Login-form input[type="password"]:hover,
 #Login-form textarea:hover {
   -webkit-transition: border-color 0.3s ease-in-out;
   -moz-transition: border-color 0.3s ease-in-out;

@@ -9,9 +9,12 @@ class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstName: '',
       email: '',
       password: '',
-      role: ''
+      password2: '',
+      errors: '',
+      role: 'client'
     };
 
   }
@@ -31,33 +34,47 @@ class Register extends Component {
   }
 
   handleSubmit = (event) => {
-    console.log(event);
     event.preventDefault();
-    // TO-DO
-    /* Password requirements:
-      1. At least 1 uppercase, lowercase, special character, and number
-      2. At least 15 characters long
-      3. Hashed (maybe by bcrypt)
-      emails:
-        For testing purposes, maybe don't check validity
-    */
+
+    const newUser = {
+      firstName: this.state.firstName,
+      email: this.state.email,
+      password: this.state.password,
+      password2: this.state.password2,
+      role: this.state.role
+    };
+
+        
   }
 
   render() {
+      const { errors } = this.state;
+
       return (
       <div className="Register">
         <Header />
         <div className="Register-container">
-          <form id="Register-form">
+          <form noValidate onSubmit={this.handleSubmit} id="Register-form">
             <h3>Sign Up</h3>
+            <fieldset>
+              <input 
+                name="firstName"
+                value={ this.state.firstName } 
+                onChange={ this.handleChange } 
+                placeholder="First name" 
+                type="text" 
+                tabIndex="1" 
+                required 
+                autoFocus/>
+            </fieldset>
             <fieldset>
               <input 
                 name="email"
                 value={ this.state.email } 
                 onChange={ this.handleChange } 
                 placeholder="Email" 
-                type="text" 
-                tabIndex="1" 
+                type="email" 
+                tabIndex="2" 
                 required 
                 autoFocus/>
             </fieldset>
@@ -67,8 +84,18 @@ class Register extends Component {
                 value={ this.state.password } 
                 onChange={ this.handleChange } 
                 placeholder="Password" 
-                type="text" 
-                tabIndex="2" 
+                type="password" 
+                tabIndex="3" 
+                required/>
+            </fieldset>
+            <fieldset>
+              <input 
+                name="password2" 
+                value={ this.state.password2 } 
+                onChange={ this.handleChange } 
+                placeholder="Confirm password" 
+                type="password" 
+                tabIndex="4" 
                 required/>
             </fieldset>
             <fieldset>
@@ -88,8 +115,8 @@ class Register extends Component {
                 name="role" 
                 />Contractor
             </fieldset>
-            <button name="submit" type="submit" id="submit-register">Sign Up</button>
-            <p className="register">Have an account? <Link to="/login"><a title="login">Log In</a></Link></p>
+            <button name="submit" type="submit" id="submit-register">Register</button>
+            <p className="register">Have an account? <Link to="/login">Log In</Link></p>
           </form>
         </div>
         <Footer />

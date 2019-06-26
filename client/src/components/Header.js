@@ -22,11 +22,11 @@ class Header extends Component {
             <img src={ watermelon } 
                 alt="Watermelon Icon"/>
             <nav className="header-item-2">
-                <Link style={style} to="/"><a>Home</a></Link>
-                <Link style={style} to="/profile"><a>Profile</a></Link>
-                <Link style={style} to="/"><a>Messages</a></Link>
-                <Link style={style} to="/login"><a>Log In</a></Link>
-                <Link style={style} to="/register"><a>Sign Up</a></Link>
+                <Link style={style} to="/">Home</Link>
+                <Link style={style} to="/profile">Profile</Link>
+                <Link style={style} to="/">Messages</Link>
+                <Link style={style} to="/login">Log In</Link>
+                <Link style={style} to="/register">Sign Up</Link>
             </nav>
           </div>
         </header>
