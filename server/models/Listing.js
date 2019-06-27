@@ -4,26 +4,31 @@ const Schema = mongoose.Schema;
 const ListingSchema = new Schema({
 	jobName: {
 		type: String,
-    maxlength: 50
-		required: true
+    maxlength: 50,
+		required: true,
+    default: "Job Listing"
 	},
   price: {
     type: Number,
     min: 0,
-    required: true
+    required: true,
+    default: 0
   },
   cityName: {
     type: String,
-    required: true
+    required: true,
+    default: ""
   },
   stateCode: {
-    type: String
-    required: true
+    type: String,
+    required: true,
+    default: ""
   },
   description: {
     type: String,
-    maxlength: 200,
-    required: true
+    maxlength: 500,
+    required: true,
+    default: "Job Description"
   },
   datePosted: {
     type: Date,
@@ -32,11 +37,13 @@ const ListingSchema = new Schema({
   },
   owner: {
     type: String,
-    required: true
+    required: true,
+    default: ""
   },
   complete: {
     type: Boolean,
-    required: true
+    required: true,
+    default: false
   }
 
 

@@ -8,7 +8,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
-const users = require("./routes/api/users");
+
+const users = require('./routes/api/users');
+const listings = require('./routes/api/listings');
 
 const app = express();
 
@@ -46,6 +48,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/listings", listings);
 
 const port = process.env.PORT || 5000;
 
