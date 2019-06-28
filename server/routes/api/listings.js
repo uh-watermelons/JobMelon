@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+// Middleware so people can only edit/delete their own listings
+const isUserAuthenticated = require('../../middleware/authenticator').isUserAuthenticated;
 // Get the Listing model
 const Listing = require('../../models/Listing');
 
@@ -8,7 +10,12 @@ const Listing = require('../../models/Listing');
 // @desc Get all listings
 // @access Public
 
+const jwt = require('jsonwebtoken');
+const jwtSecret = require('../../config/keys').secretOrKey;
+const jwt_decode = require('jwt-decode');
+
 router.get("/", (req, res) => {
+
 	Listing
 		.find() // Get all listings
 		.sort({ date: -1}) // Newest come first
@@ -19,7 +26,7 @@ router.get("/", (req, res) => {
 // @desc Get specific listing
 // @access Public
 
-router.get("/:id", (req, res) => {
+router.get("/:id",(req, res) => {
 	Listing
 		.findById(req.params.id) // Get all listings
 		.then(listing => res.json(listing))

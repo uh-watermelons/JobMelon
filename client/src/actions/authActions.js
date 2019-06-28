@@ -12,7 +12,7 @@ import {
 export const registerUser = (userData, history) => dispatch =>
 {
 	axios
-		.post('/api/users/register', userData)
+		.post('/api/authentication/register', userData)
 		.then(res => history.push('/login')) // Redirects to login upon registration
 		.catch(err => dispatch({
 				type: GET_ERRORS,
@@ -25,7 +25,7 @@ export const registerUser = (userData, history) => dispatch =>
 export const loginUser = (userData) => dispatch =>
 {
 	axios
-		.post('/api/users/login', userData)
+		.post('/api/authentication/login', userData)
 		.then(res => {
 			// Save to localStorage
 

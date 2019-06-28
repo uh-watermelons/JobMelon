@@ -44,4 +44,16 @@ const EndUserSchema = new Schema({
 
 });
 
+// Updates user's data
+EndUserSchema.statics.updateUser = function(userId, newData) {
+	this.updateOne(
+			{id:userId},
+			{ $set: { newData } }
+		)
+		.then(user => {return true})
+		.catch(err => {throw err});
+}
+
+
+
 module.exports = EndUser = mongoose.model("EndUser", EndUserSchema);

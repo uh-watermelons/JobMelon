@@ -3,6 +3,8 @@ import Header from '../../Header';
 import Footer from '../../Footer';
 import CreateJobListing from '../create_job_listing_page/CreateJobListing';
 
+import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import './Profile.css';
 
@@ -10,12 +12,29 @@ class Profile extends Component {
   /* Data:
       User
   */
-  state = {
+  constructor(props){
+    super(props);
+    this.state = {
+     userData: null
+    }
+  }
+
+
+  componentDidMount() {
+    // Connect to redux store to get auth info
+    // Look at Header.js for example
+    // Once you get auth info you get the userID
+    let userID = 'USERID'; // TODO
+    let url = '/api/user/' + userID;
+    axios
+      .get(url)
+      .then(res => this.setState({userData: res.data}))
+      .catch(err => console.log(err)); 
+
   }
 
   render() {
     const { user } = this.props;
-    console.log(user.listings);
     return (
       <div className="Profile">
         <Header />

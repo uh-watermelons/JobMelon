@@ -16,7 +16,7 @@ class HomePage extends Component {
 
   getDatabase = () => {
     // Use axios to make HTTP request
-    axios.get('/currentjobs')
+    axios.get('/api/listings')
     .then(res => {
       console.log(res.data);
       this.setState({listings: res.data})
@@ -28,7 +28,6 @@ class HomePage extends Component {
   // Grab listings from Mongo
   componentDidMount() {
     this.getDatabase();
-    console.log(this.state);
   }
 
   render() {

@@ -1,121 +1,116 @@
-const express = require("express");
+// Create route for getting user information
+const express = require('express');
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
 
-// Load input validation
+const EndUser = require('../../models/EndUser');
+const Listing = require('../../models/Listing');
+// Middleware for making sure user is who they say they are
+const isUserAuthenticated = require('../../middleware/authenticator').isUserAuthenticated;
 
-const validateRegisterInput = require("../../validation/register");
-const validateLoginInput = require("../../validation/login");
-
-// Load EndUser model
-const EndUser = require("../../models/EndUser");
+// Import helper functions
+const validateUserAuthenticity = require('../../utils/utils').validateUserAuthenticity;
 
 
-// @route POST api/users/register
-// @desc Register user
-// @access Public
+// Will be used to encrypt passwords
+// We will not hash this with brcypt because
+// bcrypt can't decrypt passwords (which is good)
+// But we need the password to be decrypted to get/update it
+const Cryptr = require('cryptr'); // include cryptr module
+const cryptr = new Cryptr('key'); // instatiate encrypter/decrypter with the secret key
 
-router.post("/register", (req, res) => {
-	// Form validation
 
-	// Pull errors and isValid boolean from validation function
-	const { errors, isValid } = validateRegisterInput(req.body);
+// @route api/user/:userId
+// @desc Get sensitive user information
+// @access Private
+router.get('/:userId', isUserAuthenticated, (req, res) =>{
+	
+	const { userId } = req.params;
+	// authenticator should have set res.locals.auth
+	if(validateUserAuthenticity(res.locals, userId)) 
+	{	
+		console.log('success');
+		// This means user is who they say they are so...
+		// Find the user information and return its data
+		console.log(userId);
+		EndUser
+			.findOne({_id:userId})
+			.then(user => {console.log(user);res.json(user);})
+			.catch(err => 
+				res
+					.status(404)
+					.json({
+						status: 404,
+						message: 'User does not exist'
+					})
+				);
+	} else {
+		console.log('failed');
+		res.status(401).json({
+			status: 401,
+			message: 'UNAUTHORIZED'
+		});
+	}
+});
 
-	// Check validation
-	if(!isValid) {
-		return res.status(400).json(errors);
+// @route api/user/edit/:userId
+// @desc Edits user information
+// @access private
+router.post('/edit/:userId', isUserAuthenticated, (req, res) => {
+
+	const { userId } = req.params.userId;
+	const { newData } = req.body;
+
+	// authenticator should have set res.locals.auth
+	if(validateUserAuthenticity(res.locals, userId)) 
+	{
+		// If the data is valid then eskeetit
+		if(validateNewUserData(newData)) {
+			// Find user in collection and update its information
+			// Make sure to hash credit card information
+			const encryptedCCNumber = cryptr.encrypt(newData.ccNumber);
+			newData.ccNumber = encryptedCCNumber;
+			// Finally, update the user information
+			EndUser
+				.updateUser(userId, newData)
+				.then(user => res.json({message: 'Updated user information'}))
+				.catch(err => res.status(404).json({message: 'Could not update user information'}));
+		} else {
+			res.status(400).json({errors})
+		}
+	} else {
+		res.status(401).json({
+			status: 401,
+			message: 'UNAUTHORIZED'
+		})
+	}
+});
+
+// @route api/user/:userId/listings
+// @desc Give user his/her listings
+// @access private
+router.get('/:userId/listings', isUserAuthenticated, (req, res) => {
+	const { userId } = req.params.userId;
+
+	if(validateUserAuthenticity(res.locals, userId)) {
+		// Get the userid's owner field
+		const errors = {};
+		const ownerName = EndUser.findById(userId, 'email', { lean: true}, err => {errors.message = 'User does not exist'});
+		// Find all of the user's listings as an array
+		const listings = Listing.find({owner: owerName}, { lean: true}, err => {errors.message = 'User has no listings'});
+		if(isEmpty(errors)) {
+			res.json(listings);
+		} else {
+			res.json(errors);
+		}
+	} else {
+		res.status(401).json({
+			status: 401,
+			message: 'UNAUTHORIZED'
+		});
 	}
 
-	EndUser
-		.findOne({ email: req.body.email })
-		.then(user => {
-			if(user) {
-				return res.status(400).json({email: "Email already exists"});
-			} else {
-				const newUser = new EndUser({
-					firstName: req.body.firstName,
-					email: req.body.email,
-					password: req.body.password,
-					role: req.body.role
-				});
-
-				// Hash password before saving in database
-				bcrypt.genSalt(10, (err, salt) => {
-					bcrypt.hash(newUser.password, salt, (err, hash) => {
-						if(err) throw err;
-						newUser.password = hash;
-						newUser
-							.save()
-							.then(user => res.json(user))
-							.catch(err => console.log(err));
-					});
-				});
-			}
-		});
 });
 
 
-// @route POST api/users/login
-// @desc Login user and return JWT token
-// @access Public
-router.post("/login", (req, res) => {
-	// Form validation
-
-	const { errors, isValid } = validateLoginInput(req.body);
-
-	//Check validation
-	if(!isValid) {
-		return res.status(400).json(errors);
-	}
-
-	const email = req.body.email;
-	const password = req.body.password;
-
-	// Find user by email
-	EndUser
-		.findOne({ email })
-		.then(user => {
-			// Check if user exists
-			if(!user) {
-				return res.status(404).json({ emailnotfound: "Email not found"});
-			}
-
-			// Check password
-			bcrypt
-				.compare(password, user.password)
-				.then(isMatch => {
-					if(isMatch) {
-						// This means user is matched
-						// So we create the JWT Payload
-						const payload = {
-							id: user.id,
-							name: user.name
-						};
-
-						// Then sign the token
-						jwt.sign(
-							payload,
-							keys.secretOrKey,
-							{
-								expiresIn: 31556926 // 1 year in seconds
-							},
-							(err, token) => {
-								res.json({
-									success: true,
-									token: "Bearer " + token
-								});
-							}
-						);
-					}
-					else {
-						return res
-							.status(400)
-							.json({ passwordincorrect: "Password incorrect" });
-					}
-				});
-		});
-});
 
 module.exports = router;

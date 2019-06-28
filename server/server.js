@@ -7,16 +7,14 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const passport = require('passport');
 
 const users = require('./routes/api/users');
 const listings = require('./routes/api/listings');
+const authentication = require('./routes/api/authentication');
 
 const app = express();
 
-// const db = require("./mongo");
-// const port = 5000;
-
+// FIX THIS -- USE express.json() instead
 // Bodyparser middleware
 app.use(
   bodyParser.urlencoded({
@@ -41,14 +39,15 @@ mongoose
   .catch(err => console.log(err));
 
 // Passport middleware
-app.use(passport.initialize());
+// app.use(passport.initialize());
 
-// Passport config
-require("./config/passport")(passport);
+// // Passport config
+// require("./config/passport")(passport);
 
 // Routes
-app.use("/api/users", users);
-app.use("/api/listings", listings);
+app.use("/api/authentication", authentication); // registering/logging in
+app.use("/api/user", users); // getting/updating user data
+app.use("/api/listings", listings); // get/update/delete listing
 
 const port = process.env.PORT || 5000;
 
@@ -63,32 +62,6 @@ app.get('/', (req, res) => {
   res.send('PORT 5000');
 });
 
-
-
-// app.get('/currentjobs', (req, res) => {
-
-//   db.getDB().collection("listings").find({}).toArray((err, listing) => {
-//     if (err)
-//       console.log(err);
-//     else {
-//       //console.log(JSON.stringify(listing, null, 2));
-//       res.json(listing);
-//       console.log(res);
-//     }
-//   });
-
-// });
-
-
-// db.connect(err => {
-//     app.listen(port, (err) => {
-//       if (err) { console.log(err); };
-//       console.log('Listening on port ' + port);
-//     });
-
-//     //db.close();
-
-// });
 
 //`);
 

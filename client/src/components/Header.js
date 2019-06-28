@@ -33,6 +33,7 @@ class Header extends Component {
                 id="logo"
                 src={ watermelon } 
                 alt="Watermelon Icon"/>
+            <Greeting user={this.props.auth.user} isAuthenticated={this.props.auth.isAuthenticated} />
             <nav className="header-item-2">
                 <Link style={{order: 5, color:'white'}} to="/">Home</Link>
                 <Link style={{order: 4, color:'white'}} to="/profile">Profile</Link>
@@ -52,6 +53,16 @@ class Header extends Component {
       );      
     }
   }
+
+// If authenticated will show user and their role
+const Greeting = props => {
+  const { role, name } = props.user;
+  return (
+    props.isAuthenticated
+    ? <p style={{color:'white', paddingTop:'1em'}}>({role}) Hello, {name}</p>
+    : null
+    )
+};
 
 // These are used to render either "Log Out" or "Log In / Sign Up"
 const LogoutButton = props => (

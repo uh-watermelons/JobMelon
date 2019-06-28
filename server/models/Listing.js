@@ -49,4 +49,9 @@ const ListingSchema = new Schema({
 
 });
 
+// Given a user's ID, get all listings belonging to it
+ListingSchema.statics.findUsersListings = function(userId) {
+
+}
+
 module.exports = Listing = mongoose.model("Listing", ListingSchema);
