@@ -34,7 +34,6 @@ const verifyTokenAndGetUID = (token) => {
 const isUserAuthenticated = (req, res, next) => {
 
   const authHeader = req.headers.authorization;
-
   // If there is no token...then user doesn't have a JWT!
   if (!authHeader) {
     return res.status(403).json({
@@ -45,15 +44,15 @@ const isUserAuthenticated = (req, res, next) => {
     // Extract the token from the authHeader
     let token = getBearerToken(authHeader);
     if (token) {
-      let id; 
+     let id; 
       try {
       	id = verifyTokenAndGetUID(token);
         res.locals.auth = {
         	userId: id
         }
-        next();      
+      next();      
     	} catch (err) {
-          return res.status(401).json({
+        return res.status(401).json({
             status: 401,
             message: 'UNAUTHORIZED'
           });

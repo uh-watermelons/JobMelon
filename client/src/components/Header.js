@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import watermelon from '../images/watermelon.svg';
 
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
 
 class Header extends Component {
-
+    constructor(props){
+      super(props);
+    }
     onLogoutClick = event => {
       event.preventDefault();
-      this.props.logoutUser();
+      // Passing in this parameter in order to redirect to home page
+      this.props.logoutUser(this.props.history); 
+      console.log(this);
     }
 
     render() {
@@ -36,7 +40,9 @@ class Header extends Component {
             <Greeting user={this.props.auth.user} isAuthenticated={this.props.auth.isAuthenticated} />
             <nav className="header-item-2">
                 <Link style={{order: 5, color:'white'}} to="/">Home</Link>
-                <Link style={{order: 4, color:'white'}} to="/profile">Profile</Link>
+                <ProfileButton 
+                  isAuthenticated={this.props.auth.isAuthenticated}
+                />
                 <LogoutButton 
                   isAuthenticated={this.props.auth.isAuthenticated}
                   action={this.onLogoutClick}
@@ -81,6 +87,11 @@ const RegisterButton = props => (
   : null
 );
 
+const ProfileButton = props => (
+  !!props.isAuthenticated
+  ? <Link style={{order: 4, color:'white'}} to="/profile">Profile</Link>
+  : null
+);
 
 
 Header.propTypes = {
@@ -95,4 +106,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Header);
+)(withRouter(Header));

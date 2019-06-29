@@ -33,7 +33,6 @@ class HomePage extends Component {
     const Listings = this.state.listings.map((listing) => {
       return !listing.complete ? <JobListing data={listing}/> : null;
     });
-    console.log(this.state.listings);
     return (
       <div className="HomePage">
         <Header />

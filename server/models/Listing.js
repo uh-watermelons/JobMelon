@@ -54,7 +54,7 @@ const ListingSchema = new Schema({
 
 // Given a user's ID, get all listings belonging to it
 ListingSchema.statics.findUsersListings = function(userId) {
-  return this.find({owner:userId}, {lean:true});
+  return this.find({owner:userId});
 };
 
 module.exports = Listing = mongoose.model("Listing", ListingSchema);

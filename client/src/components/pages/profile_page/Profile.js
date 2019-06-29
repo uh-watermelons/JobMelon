@@ -8,23 +8,23 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Profile.css';
 
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+
 class Profile extends Component {
-  /* Data:
-      User
-  */
   constructor(props){
     super(props);
     this.state = {
-     userData: null
+     userData: {}
     }
   }
-
 
   componentDidMount() {
     // Connect to redux store to get auth info
     // Look at Header.js for example
     // Once you get auth info you get the userID
-    let userID = 'USERID'; // TODO
+    let userID = this.props.auth.user.id; // TODO
     let url = '/api/user/' + userID;
     axios
       .get(url)
@@ -34,16 +34,25 @@ class Profile extends Component {
   }
 
   render() {
-    const { user } = this.props;
+    console.log(this.state.userData);
+    const { userData} = this.state;
+    console.log(userData);
     return (
       <div className="Profile">
         <Header />
         <div className="profile-layout">
           <h1 className="header">My Profile</h1>
-          <ProfileRole role={ user.role } />
-          <ProfileInformation name={ user.name } number={ user.number }/> 
+          <ProfileRole role={ userData.role }/>
+          <ProfileInformation 
+            firstName={ userData.firstName } 
+            lastName={ userData.lastName }
+            email={ userData.email }
+            ccNumber={ userData.ccNumber }
+            ccExpiryDate={ userData.ccExpiryDate }
+            ccSecurityCode={ userData.ccSecurityCode }
+            /> 
           <h2 className="listings-header">My current job listings</h2>
-          <CurrentListings listings={ user.listings }/>
+          <CurrentListings userId={ userData._id }/>
           <Link to="/createjob" className="btn create">Add new job offer</Link>
         </div>
         <Footer />
@@ -57,24 +66,74 @@ function ProfileRole(props) {
 }
 
 function ProfileInformation(props) {
-  // TODO: Format phone number
-  // TODO: Payment info
+  console.log(props);
   return (
   <div className="information">
   <h3>My information</h3>
-  <p>{ props.name }</p>
-  <p>{ props.number }</p>
-  <p>Payment Info</p>
+  <p>{ props.firstName } {props.lastName}</p>
+  <p>{ props.email }</p>
+  <h3>Payment Info</h3>
+  <PaymentInformation 
+    ccNumber={ props.ccNumber }
+    ccExpiryDate={ props.ccExpiryDate }
+    ccSecurityCode={ props.ccSecurityCode }
+  />
   <button className="btn edit">Edit Info</button>
   </div>
   );
 
 }
 
-function CurrentListings(props) {
-  const { listings } = props; // 
-  return listings
-    .map(listing => <Listing price={listing.price} jobName={listing.jobName}/>);
+function PaymentInformation(props) {
+  const ccNumber = props.ccNumber+""; // for some reason can't get length property w/out +""
+  const hasCard = (ccNumber.length > 0);
+  return (
+    hasCard
+    ? (<div>
+        <p>Card Number: XXXX-XXXX-XXXX-(1234) -TODO</p>
+        <p>Expires: {props.ccExpiryDate }</p>
+        <p>Security Code: {props.ccSecurityCode }</p>
+      </div>)
+    : (<div>
+        <p>You don't have a card on file. Update your information</p>
+      </div>)
+  );
+}
+
+
+
+class CurrentListings extends Component {
+  state = {
+    listings: []
+  }
+  componentDidUpdate(prevProps) {
+    if(prevProps.userId != this.props.userId) {
+      const userId = this.props.userId;
+      if(userId) {
+        console.log(this.props);
+        const url = '/api/listings/user/' + userId;
+        console.log(url);
+        axios
+          .get(url)
+          .then((res) => this.setState({listings:res.data}))
+          .catch(err => console.log(err));    
+     }
+ 
+    }
+
+
+  }
+  render() {
+    const Listings = this.state.listings.map((listing) => {
+      return (
+        <Listing 
+          jobName={listing.jobName} 
+          price={listing.price} 
+          description={listing.description}/>
+          );
+    });
+    return <div>{Listings}</div>;
+  }
 }
 
 function Listing(props) {
@@ -87,5 +146,14 @@ function Listing(props) {
     );
 }
 
+Profile.propTypes = {
+  auth: PropTypes.object.isRequired
+};
 
-export default Profile;
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps
+)(Profile);

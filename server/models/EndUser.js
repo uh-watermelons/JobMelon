@@ -26,11 +26,11 @@ const EndUserSchema = new Schema({
 	},
 
 	ccNumber: {
-		type: Number,
+		type: String,
 		default: 0
 	},
 	ccSecurityCode: { 
-		type: Number,
+		type: String,
 		default: 0
 	},
 	ccExpiryDate: { 

@@ -92,16 +92,16 @@ router.delete("/delete/:userId/:listingId", isUserAuthenticated, (req, res) => {
 	}
 });
 
-// @route api/listings/:userId/
+// @route api/listings/user/:userId/
 // @desc Give user his/her listings
 // @access private
-router.get('/:userId', isUserAuthenticated, (req, res) => {
-	const { userId } = req.params.userId;
-
+router.get('/user/:userId', isUserAuthenticated, (req, res) => {
+	const { userId } = req.params;
 	if(validateUserAuthenticity(res.locals, userId)) {
 		// Find all of the user's listings as an array
-		const listings = Listing.findUsersListings(userId);
-		res.json(listings);
+		Listing.find({owner:userId}, null, {lean:true}, (err, docs) => {
+			res.json(docs);
+		})
 	} else {
 		res.status(401).json({
 			status: 401,
