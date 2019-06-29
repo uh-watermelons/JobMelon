@@ -99,11 +99,11 @@ a {
 }
 /* Layout of all the cards */
 .job-listings-layout {
-	display: grid;
+/*	display: grid;
     grid-template-columns:1fr 1fr 1fr;
     grid-auto-rows:minmax(100px, auto);
+    grid-gap: 2em;*/
     margin: 0 15em 5em 15em;
-    grid-gap: 2em;
 }
 
 /* Layout of the cards themselves */
@@ -147,9 +147,10 @@ a {
 .JobListing > .picture {
 	height: 180px;
 }
-.JobListing > .button {
+.job-listing-button {
 	grid-column: 1/3;
-	height: 100%;
+	padding: 10px;
+	border-radius: 5px;
  	font-weight: 600;
  	text-align: center;
  	line-height: 50px;
@@ -157,7 +158,7 @@ a {
  	transition: all 0.2s;
  	background: #F35588;
 }
-.JobListing > .button:hover {
+.job-listing-button:hover {
 	background: #FFBBB4;
 }
 

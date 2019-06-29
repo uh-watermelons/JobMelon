@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const ObjectId = mongoose.Schema.Types.ObjectId;
+
 const ListingSchema = new Schema({
 	jobName: {
 		type: String,
@@ -21,7 +23,6 @@ const ListingSchema = new Schema({
   },
   stateCode: {
     type: String,
-    required: true,
     default: ""
   },
   description: {
@@ -35,15 +36,17 @@ const ListingSchema = new Schema({
     default: Date.now,
     required: true
   },
-  owner: {
-    type: String,
+  owner: {  // will hold owner's userID
+    type: ObjectId,
     required: true,
-    default: ""
+  },
+  ownerName: {  // only first name for privacy reasons
+    type: String,
+    required: true
   },
   complete: {
     type: Boolean,
     required: true,
-    default: false
   }
 
 
@@ -51,7 +54,7 @@ const ListingSchema = new Schema({
 
 // Given a user's ID, get all listings belonging to it
 ListingSchema.statics.findUsersListings = function(userId) {
-
-}
+  return this.find({owner:userId}, {lean:true});
+};
 
 module.exports = Listing = mongoose.model("Listing", ListingSchema);

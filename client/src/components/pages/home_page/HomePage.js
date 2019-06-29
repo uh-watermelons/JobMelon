@@ -15,7 +15,6 @@ class HomePage extends Component {
   }
 
   getDatabase = () => {
-    // Use axios to make HTTP request
     axios.get('/api/listings')
     .then(res => {
       console.log(res.data);
@@ -31,13 +30,16 @@ class HomePage extends Component {
   }
 
   render() {
-
+    const Listings = this.state.listings.map((listing) => {
+      return !listing.complete ? <JobListing data={listing}/> : null;
+    });
+    console.log(this.state.listings);
     return (
       <div className="HomePage">
         <Header />
         <h1 className="homepage-header">Current Job Listings</h1>
       	<div className="job-listings-layout">
-      	<Listings data={this.listings}/>
+      	{ Listings }
         </div>
         <Footer />
       </div>

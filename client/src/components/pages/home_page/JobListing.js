@@ -3,23 +3,40 @@ import watermelon from "../../../images/watermelon.svg";
 import { Link } from 'react-router-dom';
 
 class JobListing extends Component {
-
-  state = {
-
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
+
   render() {
-    const maxStringLength = 20;
-    let name = "";// = this.props.jobName || "Job Name";
-    if(this.props.jobName.length > maxStringLength) {
-      name = this.props.jobName.substring(0, 15) + "...";
-    } else {
-      name = this.props.jobName || "Job Name";
-    }
-    const price = this.props.price || 0;
-    //const picture = this.props.picture || "Profile Picture";
-    const location = this.props.location || "Location";
+    const {
+        _id,
+        jobName,
+        price,
+        cityName,
+        stateCode,
+        description,
+        datePosted
+      } = this.props.data;
+
+    const listingStyle = {
+      borderBottom: "1px solid black",
+      paddingBottom: "1em"
+    };
     return (
+      <div style={listingStyle} className="Listing">
+        <h3>{ jobName }</h3>
+        <h4>${ price }</h4>
+        <p>{cityName}, {stateCode}</p>
+        <p>{description}</p>
+        <p>Created: {datePosted}</p>
+        <Link className="job-listing-button" to="/job">View Job</Link>
+      </div>
+      );
+  }
+}
+/*
       <div className="JobListing" >
         <div className="jobName"><h3>{ name }</h3></div>
         <div className="description">
@@ -35,8 +52,5 @@ class JobListing extends Component {
         </div>
         <Link className="button" to="/job">View Job</Link>
       </div>
-      );
-  }
-}
-
+*/
 export default JobListing;

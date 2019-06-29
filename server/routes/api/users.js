@@ -55,61 +55,35 @@ router.get('/:userId', isUserAuthenticated, (req, res) =>{
 // @route api/user/edit/:userId
 // @desc Edits user information
 // @access private
-router.post('/edit/:userId', isUserAuthenticated, (req, res) => {
+// router.post('/edit/:userId', isUserAuthenticated, (req, res) => {
 
-	const { userId } = req.params.userId;
-	const { newData } = req.body;
+// 	const { userId } = req.params.userId;
 
-	// authenticator should have set res.locals.auth
-	if(validateUserAuthenticity(res.locals, userId)) 
-	{
-		// If the data is valid then eskeetit
-		if(validateNewUserData(newData)) {
-			// Find user in collection and update its information
-			// Make sure to hash credit card information
-			const encryptedCCNumber = cryptr.encrypt(newData.ccNumber);
-			newData.ccNumber = encryptedCCNumber;
-			// Finally, update the user information
-			EndUser
-				.updateUser(userId, newData)
-				.then(user => res.json({message: 'Updated user information'}))
-				.catch(err => res.status(404).json({message: 'Could not update user information'}));
-		} else {
-			res.status(400).json({errors})
-		}
-	} else {
-		res.status(401).json({
-			status: 401,
-			message: 'UNAUTHORIZED'
-		})
-	}
-});
+// 	// authenticator should have set res.locals.auth
+// 	if(validateUserAuthenticity(res.locals, userId)) 
+// 	{
+// 		// If the data is valid then eskeetit
+// 		if(validateNewUserData(newData)) {
+// 			// Find user in collection and update its information
+// 			// Make sure to hash credit card information
+// 			const encryptedCCNumber = cryptr.encrypt(newData.ccNumber);
+// 			newData.ccNumber = encryptedCCNumber;
+// 			// Finally, update the user information
+// 			EndUser
+// 				.updateUser(userId, newData)
+// 				.then(user => res.json({message: 'Updated user information'}))
+// 				.catch(err => res.status(404).json({message: 'Could not update user information'}));
+// 		} else {
+// 			res.status(400).json({errors})
+// 		}
+// 	} else {
+// 		res.status(401).json({
+// 			status: 401,
+// 			message: 'UNAUTHORIZED'
+// 		})
+// 	}
+// });
 
-// @route api/user/:userId/listings
-// @desc Give user his/her listings
-// @access private
-router.get('/:userId/listings', isUserAuthenticated, (req, res) => {
-	const { userId } = req.params.userId;
-
-	if(validateUserAuthenticity(res.locals, userId)) {
-		// Get the userid's owner field
-		const errors = {};
-		const ownerName = EndUser.findById(userId, 'email', { lean: true}, err => {errors.message = 'User does not exist'});
-		// Find all of the user's listings as an array
-		const listings = Listing.find({owner: owerName}, { lean: true}, err => {errors.message = 'User has no listings'});
-		if(isEmpty(errors)) {
-			res.json(listings);
-		} else {
-			res.json(errors);
-		}
-	} else {
-		res.status(401).json({
-			status: 401,
-			message: 'UNAUTHORIZED'
-		});
-	}
-
-});
 
 
 
