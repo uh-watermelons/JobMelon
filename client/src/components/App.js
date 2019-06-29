@@ -36,12 +36,6 @@ class App extends Component {
         </div>
         ;
 
-    const listingPage = () =>
-      <div>
-      <JobListingDetailed listing={ jobs[0] } />
-      </div>
-      ;
-
     const profilePage = () =>
       <div>
       <Profile user={ users[0] }/>
@@ -61,7 +55,7 @@ class App extends Component {
           <Route exact path="/" component={homePage}/>
           <Route exact path="/login" component={Login}/>
           <Route exact path="/register" component={Register}/>
-          <Route exact path="/job" component={listingPage}/>
+          <Route exact path="/job/:listingId" component={JobListingDetailed}/>
           <Route exact path="/profile" component={profilePage}/>
           <Route exact path="/createjob" component={createJobPage}/>
         </div>
