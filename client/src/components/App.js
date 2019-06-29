@@ -6,6 +6,8 @@ import Profile from './pages/profile_page/Profile';
 import Register from './pages/register_page/Register';
 import Login from './pages/login_page/Login';
 import ContactUs from './pages/contact_us/ContactUs';
+import TermsOfUse from './pages/terms_of_use/TermsOfUse';
+import PrivacyPolicy from './pages/privacy_policy/PrivacyPolicy';
 
 import { Provider } from 'react-redux';
 import store from '../store';
@@ -62,6 +64,8 @@ class App extends Component {
             <PrivateRoute exact path="/create" component={CreateJobListing} />
           </Switch>
           <Route exact path="/contactus" component={ContactUs}/>
+          <Route exact path="/terms" component={TermsOfUse}/>
+          <Route exact path="/privacy" component={PrivacyPolicy}/>
         </div>
       </Router>
     </Provider>

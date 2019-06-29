@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ContactUs from './pages/contact_us/ContactUs';
+import TermsOfUse from './pages/terms_of_use/TermsOfUse';
+import PrivacyPolicy from './pages/privacy_policy/PrivacyPolicy';
 import { Link, withRouter } from 'react-router-dom';
 
 class Footer extends Component {
@@ -11,9 +13,8 @@ class Footer extends Component {
     	<footer className="Footer">
 			<p>Copyright © 2019 Team Watermelon All rights reserved.</p>
 		  	<Link to="/contactus" style={style}><p>Contact Us</p></Link>
-		  	<p>Terms of Use</p>
-		  	<p> Privacy Policy</p>
-		  	<p>Cookie Policy</p>
+		  	<Link to="/terms" style={style}><p>Terms of Use</p></Link>
+		  	<Link to="/privacy" style={style}><p>Privacy Policy</p></Link>
 		 </footer>
       );
   }
