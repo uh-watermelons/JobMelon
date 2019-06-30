@@ -121,7 +121,7 @@ class CurrentListings extends Component {
   componentWillUnmount = () => {
   }
   componentDidUpdate(prevProps) {
-    if(prevProps.userId != this.props.userId) {
+    if(prevProps.userId !== this.props.userId) {
       this.getCurrentListings();
     }
   }
@@ -170,6 +170,7 @@ class CurrentListings extends Component {
             />
             );        
          }
+      return null;
     });
     const PastListings = this.state.listings.map((listing) => {
       if(listing.complete) {
@@ -187,6 +188,7 @@ class CurrentListings extends Component {
             />
             );        
          }
+      return null;
     });
 
     return (

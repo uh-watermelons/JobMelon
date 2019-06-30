@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import ContactUs from './pages/contact_us/ContactUs';
-import TermsOfUse from './pages/terms_of_use/TermsOfUse';
-import PrivacyPolicy from './pages/privacy_policy/PrivacyPolicy';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Footer extends Component {
   render() {

@@ -33,8 +33,6 @@ class CreateJobListing extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const userId = '';
-    const firstName = '';
     const newListing = {
       jobName: this.state.jobName,
       cityName: this.state.cityName,

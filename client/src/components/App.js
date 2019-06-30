@@ -18,10 +18,6 @@ import './App.css';
 /* Import React Router */
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-/* Import for dummy data */
-import { listings as jobs } from './data/listings';
-import { users } from './data/users';
-
 /* The wrapper component for protecting routes */
 import PrivateRoute from "./pages/private_route/PrivateRoute";
 

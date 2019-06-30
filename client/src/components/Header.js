@@ -7,9 +7,6 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
 
 class Header extends Component {
-    constructor(props){
-      super(props);
-    }
     onLogoutClick = event => {
       event.preventDefault();
       // Passing in this parameter in order to redirect to home page
@@ -20,9 +17,6 @@ class Header extends Component {
       const style = {
         color: 'white'
       }
-
-      const { user } = this.props.auth
-
       return (
         <header style={{backgroundColor: "#71A95A"}} id="Header">
           <div className="header-layout">

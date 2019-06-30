@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import watermelon from "../../../images/watermelon.svg";
 import { Link } from 'react-router-dom';
 
 class JobListing extends Component {
