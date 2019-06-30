@@ -13,7 +13,7 @@ class ContactUs extends Component {
           <div class="center">
             <br></br>
             <br></br>
-            <h2>Contact Us</h2>
+            <h2 id="contact-us">Contact Us</h2>
             <p>If you have any comments, concerns, feature requests, <br></br>
             bug reports, or anything else, feel free to contact us at</p>
             <a href="mailto:info@jobmelon.com">info@jobmelon.com</a>

@@ -24,13 +24,14 @@ class Profile extends Component {
     // Connect to redux store to get auth info
     // Look at Header.js for example
     // Once you get auth info you get the userID
-    let userID = this.props.auth.user.id; // TODO
-    let url = '/api/user/' + userID;
-    axios
-      .get(url)
-      .then(res => this.setState({userData: res.data}))
-      .catch(err => console.log(err)); 
-
+    if(this.props.auth.isAuthorizaed) {
+      let userID = this.props.auth.user.id; // TODO
+      let url = '/api/user/' + userID;
+      axios
+        .get(url)
+        .then(res => this.setState({userData: res.data}))
+        .catch(err => console.log(err));       
+    }
   }
 
   handleEditProfile = (event) => {
@@ -82,7 +83,7 @@ function ProfileInformation(props) {
     ccExpiryDate={ props.ccExpiryDate }
     ccSecurityCode={ props.ccSecurityCode }
   />
-  <button onclick={props.handleEditProfile} className="btn edit">Edit Info</button>
+  <button onClick={props.handleEditProfile} className="btn edit">Edit Info</button>
   </div>
   );
 

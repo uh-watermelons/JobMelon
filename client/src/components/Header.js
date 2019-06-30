@@ -70,7 +70,7 @@ const Greeting = props => {
 // These are used to render either "Log Out" or "Log In / Sign Up"
 const LogoutButton = props => (
   props.isAuthenticated 
-  ? <Link onClick={props.action} style={{order: 3, color:'white'}}>Log Out</Link>
+  ? <Link to="/" onClick={props.action} style={{order: 3, color:'white'}}>Log Out</Link>
   : null
 );
 const LoginButton = props => (

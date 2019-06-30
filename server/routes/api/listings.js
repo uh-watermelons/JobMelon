@@ -37,42 +37,45 @@ router.get("/:id",(req, res) => {
 		.catch(err => res.status(404).json({success: false}));
 });
 
-// @route POST api/listings/create
+// @route POST api/listings/create/:userId
 // @desc Post a listing
 // @access Private
 
 router.post("/create/:userId", isUserAuthenticated, (req, res) => {
-	// Extract req.body
-	const { errors, isValid } = validateListingInput(req.body);
 
-	if(!isValid) {
-		return res.status(400).json(errors);
+	if(validateUserAuthenticity(res.locals, req.params.userId)) {
+		const { errors, isValid } = validateListingInput(req.body);
+
+		if(!isValid) {
+			return res.status(400).json(errors);
+		} else {
+			const newListing = new Listing({
+			jobName: req.body.jobName,
+			price: req.body.price,
+			cityName: req.body.cityName,
+			stateCode: req.body.stateCode,
+			description: req.body.description,
+			datePosted: Date.now(),
+			owner: req.body.owner,
+			ownerName: req.body.ownerName,
+			complete: false,
+			});
+			// Save to database
+			newListing
+				.save()
+				.then(listing => res.json({success:true}))
+				.catch(err => res.json({success:false}));
+		}
+	} else {
+		res.status(401).json({
+			status: 401,
+			message: 'UNAUTHORIZED'
+		});
 	}
-
-	// Get the userId and user's name to put into newListing
-	const { userId } = req.params;
-	const ownerName = EndUser.findById({_id:userId}, 'firstName', { lean: true});
-
-	const newListing = new Listing({
-		jobName: req.body.jobName,
-		price: req.body.price,
-		cityName: req.body.cityName,
-		stateCode: req.body.stateCode,
-		description: req.body.description,
-		datePosted: Date.now(),
-		owner: userId,
-		ownerName: owerName,
-		complete: false,
-	});
-
-	newListing
-		.save()
-		.then(listing => res.json({success:true}))
-		.catch(err => res.json({success:false}));
 });
 
 // @route DELETE api/listings/delete/:userId/:listingId
-// @desc Delete a listing
+// @desc Delete a listing, remove from database
 // @access Private
 
 router.delete("/delete/:userId/:listingId", isUserAuthenticated, (req, res) => {
@@ -92,7 +95,7 @@ router.delete("/delete/:userId/:listingId", isUserAuthenticated, (req, res) => {
 	}
 });
 
-// @route POST api/listings/delete/:userId/:listingId
+// @route POST api/listings/complete/:userId/:listingId
 // @desc Complete a listing (setting complete to true)
 // @access Private
 

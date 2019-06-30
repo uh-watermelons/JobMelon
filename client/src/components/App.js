@@ -61,7 +61,7 @@ class App extends Component {
           <Route exact path="/job/:listingId" component={JobListingDetailed}/>
           <Switch>
             <PrivateRoute exact path="/profile" component={Profile} />
-            <PrivateRoute exact path="/create" component={CreateJobListing} />
+            <PrivateRoute exact path="/createjob" component={CreateJobListing} />
           </Switch>
           <Route exact path="/contactus" component={ContactUs}/>
           <Route exact path="/terms" component={TermsOfUse}/>

@@ -3,32 +3,56 @@ import Header from '../../Header';
 import Footer from '../../Footer';
 import { Link } from 'react-router-dom';
 import './CreateJobListing.css'
+import CurrencyInput from 'react-currency-input';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class CreateJobListing extends Component {
   constructor(props) {
     super(props);
     this.state = {
       jobName: '',
-      location: '',
+      cityName: '',
+      stateCode: '',
       description: '',
-      //price: 0,
+      price: 0,
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    event.preventDefault();
+  handleChange = (event) => {
     const field = event.target.name;
     this.setState(
       { [field]: event.target.value}
       );
   }
+  handlePriceChange = (event, maskedvalue, floatvalue) => {
+    this.setState({price: floatvalue});
+  }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
-    // TO-DO
+    const userId = '';
+    const firstName = '';
+    const newListing = {
+      jobName: this.state.jobName,
+      cityName: this.state.cityName,
+      stateCode: this.state.stateCode,
+      description: this.state.description,
+      price: this.state.price,
+      owner: this.props.auth.user.id,
+      ownerName: this.props.auth.user.name,
+      complete: false
+    }
+    console.log(newListing);
+    const url = '/api/listings/create/' + this.props.auth.user.id;
+    axios
+      .post(url, newListing)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    this.props.history.push('/');
   }
 
   render() {
@@ -36,7 +60,7 @@ class CreateJobListing extends Component {
       <div className="CreateJobListing">
         <Header />
         <div className="CreateJobListing-container">
-          <form id="CreateJobListing-form">
+          <form noValidate onSubmit={this.handleSubmit} id="CreateJobListing-form">
             <h3>Create Job Listing</h3>
             <fieldset>
               <input 
@@ -51,12 +75,22 @@ class CreateJobListing extends Component {
             </fieldset>
             <fieldset>
               <input 
-                name="location" 
-                value={ this.state.location } 
+                name="cityName" 
+                value={ this.state.cityName } 
                 onChange={ this.handleChange } 
-                placeholder="City and State" 
+                placeholder="City" 
                 type="text" 
                 tabIndex="2" 
+                required/>
+            </fieldset>
+            <fieldset>
+              <input 
+                name="stateCode" 
+                value={ this.state.stateCode } 
+                onChange={ this.handleChange } 
+                placeholder="State" 
+                type="text" 
+                tabIndex="3" 
                 required/>
             </fieldset>
             <fieldset>
@@ -65,21 +99,12 @@ class CreateJobListing extends Component {
                 value={ this.state.description } 
                 onChange={ this.handleChange } 
                 placeholder="Job Description" 
-                tabIndex="3" 
-                required></textarea>
-            </fieldset>
-            <fieldset>
-              <input 
-                name="price" 
-                value={ this.state.price } 
-                onChange={ this.handleChange } 
-                placeholder="Price" 
-                type="text" 
                 tabIndex="4" 
-                step="any" 
-                required 
-                autoFocus/>
+                required>
+                </textarea>
             </fieldset>
+            <label>Price</label>
+            <CurrencyInput ref="priceInput" prefix="$" value={this.state.price} onChangeEvent={this.handlePriceChange}/>
             <fieldset>
               <button 
                 name="submit" 
@@ -88,7 +113,7 @@ class CreateJobListing extends Component {
                 data-submit="...Sending">Post</button>
             </fieldset>
             <p className="cancel"><Link to="/profile">Cancel</Link></p>
-                  </form>
+          </form>
         </div>
         <Footer />
       </div>
@@ -97,4 +122,14 @@ class CreateJobListing extends Component {
 }
 
 
-export default CreateJobListing;
+CreateJobListing.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(
+  mapStateToProps
+)(CreateJobListing);
