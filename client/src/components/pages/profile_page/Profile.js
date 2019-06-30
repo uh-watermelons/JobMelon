@@ -33,6 +33,10 @@ class Profile extends Component {
 
   }
 
+  handleEditProfile = (event) => {
+
+  }
+
   render() {
     console.log(this.state.userData);
     const { userData} = this.state;
@@ -51,9 +55,9 @@ class Profile extends Component {
             ccExpiryDate={ userData.ccExpiryDate }
             ccSecurityCode={ userData.ccSecurityCode }
             /> 
+          <Link to="/createjob" className="btn create">Add new job offer</Link>
           <h2 className="listings-header">My current job listings</h2>
           <CurrentListings userId={ userData._id }/>
-          <Link to="/createjob" className="btn create">Add new job offer</Link>
         </div>
         <Footer />
       </div>
@@ -78,7 +82,7 @@ function ProfileInformation(props) {
     ccExpiryDate={ props.ccExpiryDate }
     ccSecurityCode={ props.ccSecurityCode }
   />
-  <button className="btn edit">Edit Info</button>
+  <button onclick={props.handleEditProfile} className="btn edit">Edit Info</button>
   </div>
   );
 
@@ -106,42 +110,116 @@ class CurrentListings extends Component {
   state = {
     listings: []
   }
+  componentDidMount = () => {
+    this.getCurrentListings();
+    // Constantly update listings if it is removed
+    this.timerID = setInterval(this.getCurrentListings, 500);
+  }
+  componentWillUnmount = () => {
+    clearInterval(this.timerId);
+  }
   componentDidUpdate(prevProps) {
     if(prevProps.userId != this.props.userId) {
-      const userId = this.props.userId;
-      if(userId) {
-        console.log(this.props);
-        const url = '/api/listings/user/' + userId;
-        console.log(url);
-        axios
-          .get(url)
-          .then((res) => this.setState({listings:res.data}))
-          .catch(err => console.log(err));    
-     }
- 
+      //this.getCurrentListings();
     }
-
-
   }
+  getCurrentListings = () => {
+    const userId = this.props.userId;
+    if(userId) {
+    const url = '/api/listings/user/' + userId;
+    axios
+      .get(url)
+      .then((res) => this.setState({listings:res.data}))
+      .catch(err => console.log(err));    
+     }
+  }
+  handleCompleteListing = (userId, listingId) => () => {
+    const url = "/api/listings/complete/" + userId + "/" + listingId;
+    axios
+      .post(url)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+      ;
+  }
+  handleRemoveListing = (userId, listingId) => () => {
+    const url = "/api/listings/delete/" + userId + "/" + listingId;
+    axios
+      .delete(url)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err))
+      ;
+  }
+
   render() {
     const Listings = this.state.listings.map((listing) => {
-      return (
-        <Listing 
-          jobName={listing.jobName} 
-          price={listing.price} 
-          description={listing.description}/>
-          );
+      if(!listing.complete) {
+        return (
+          <Listing 
+            jobName={listing.jobName} 
+            price={listing.price} 
+            description={listing.description}
+            handleCompleteListing={this.handleCompleteListing}
+            handleRemoveListing={this.handleRemoveListing}
+            key={listing._id}
+            listingId={listing._id}
+            userId={listing.owner}
+            complete={listing.complete}
+            />
+            );        
+         }
     });
-    return <div>{Listings}</div>;
+    const PastListings = this.state.listings.map((listing) => {
+      if(listing.complete) {
+        return (
+          <PastListing 
+            jobName={listing.jobName} 
+            price={listing.price} 
+            description={listing.description}
+            handleCompleteListing={this.handleCompleteListing}
+            handleRemoveListing={this.handleRemoveListing}
+            key={listing._id}
+            listingId={listing._id}
+            userId={listing.owner}
+            complete={listing.complete}
+            />
+            );        
+         }
+    });
+
+    return (
+      <div>
+        {Listings}
+        <h4>Past job listings</h4>
+        {PastListings}
+      </div>
+      );
   }
 }
 
 function Listing(props) {
+  const {userId, listingId} = props;
   return (
     <div className="profile-listing">
       <p className="profile-listing-price">${props.price}</p>
       <p className="profile-listing-name">{props.jobName}</p>
-      <button className="btn delete">Remove</button>
+      <button 
+        onClick={props.handleCompleteListing(userId, listingId)} 
+        className="btn complete">Complete</button>
+      <button 
+        onClick={props.handleRemoveListing(userId, listingId)} 
+        className="btn delete">X</button>
+    </div>
+    );
+}
+function PastListing(props) {
+  const {userId, listingId} = props;
+  return (
+    <div className="profile-listing-complete">
+      <p className="profile-listing-complete-price">${props.price}</p>
+      <p className="profile-listing-complete-name">{props.jobName}</p>
+      <button 
+        onClick={props.handleRemoveListing(userId, listingId)} 
+        className="btn delete-completed">Remove</button>
     </div>
     );
 }

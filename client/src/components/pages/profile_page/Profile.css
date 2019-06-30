@@ -55,9 +55,15 @@
 .btn.create {
 	width: 200px;
 	height: 50px;
+	padding: 0.5em;
 	margin-left: 1em;
+	margin: 1em;
+	border-radius: 5px;
 }
-
+.btn.edit {
+	padding: 0.5em;
+	border-radius: 5px;
+ }
 .listings-header {
 	width: 400px;
 	padding-bottom: 0.3em;
@@ -86,12 +92,64 @@
 	padding: 1em;
 }
 .profile-listing > .profile-listing-name {
-	flex: 4;
+	flex: 5;
 	padding: 1em;
 }
-.btn.delete {
-	flex: 1;
+
+.btn.complete {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;	
+	background-color: #71A95A;
+	flex: 3;
 	height: 100%;
 	padding: 1em;
 	margin: 0;
+}
+.btn.complete:hover {
+	background-color: #007944;
+ 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.btn.delete {
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background-color: #d11a2a;
+	height: 100%;
+	width:50px;
+	padding: 1em;
+	margin: 0;
+}
+.btn.delete:hover {
+
+	background-color: #c71020;
+ 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
+}
+.profile-listing-complete {
+	width: 700px;
+	margin: 0;
+	margin-bottom: 0em;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.profile-listing-complete > .profile-listing-complete-price {
+	flex: 1;
+	padding: 1em;
+}
+.profile-listing-complete > .profile-listing-complete-name {
+	flex: 7;
+	padding: 1em;
+}
+.btn.delete-completed {
+	border-radius: 5px;
+	background-color: #d11a2a;
+	height: 100%;
+	width:150px;
+	padding: 0.3em;
+	margin: 0;
+}
+.btn.delete-completed:hover {
+	background-color: #c71020;
+ 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+
 }

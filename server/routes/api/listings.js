@@ -71,19 +71,38 @@ router.post("/create/:userId", isUserAuthenticated, (req, res) => {
 		.catch(err => res.json({success:false}));
 });
 
-// @route DELETE api/listings/:id
-// @desc Post a listing
+// @route DELETE api/listings/delete/:userId/:listingId
+// @desc Delete a listing
 // @access Private
 
 router.delete("/delete/:userId/:listingId", isUserAuthenticated, (req, res) => {
-	const { userId } = req.params;
+	const { userId, listingId } = req.params;
 	// authenticator should have set res.locals.auth
 
 	if(validateUserAuthenticity(res.locals, userId)) {
 		Listing
-			.findById(req.params.listingId)
+			.findById(listingId)
 			.then(listing => listing.remove().then(() => res.json({success: true})))
 			.catch(err => console.log(err));
+	} else {
+		res.status(401).json({
+			status: 401,
+			message: 'UNAUTHORIZED'
+		});
+	}
+});
+
+// @route POST api/listings/delete/:userId/:listingId
+// @desc Complete a listing (setting complete to true)
+// @access Private
+
+router.post("/complete/:userId/:listingId", isUserAuthenticated, (req, res) => {
+	const { userId, listingId } = req.params;
+	// authenticator should have set res.locals.auth
+	if(validateUserAuthenticity(res.locals, userId)) {
+		Listing.update({_id:listingId}, { $set: {complete:true} }, null, (err, docs) => {
+			console.log('successfully updated');
+		})
 	} else {
 		res.status(401).json({
 			status: 401,

@@ -14,7 +14,6 @@ class Header extends Component {
       event.preventDefault();
       // Passing in this parameter in order to redirect to home page
       this.props.logoutUser(this.props.history); 
-      console.log(this);
     }
 
     render() {
@@ -23,8 +22,6 @@ class Header extends Component {
       }
 
       const { user } = this.props.auth
-      console.log(this.props.auth);
-      console.log(user);
 
       return (
         <header style={{backgroundColor: "#71A95A"}} id="Header">
