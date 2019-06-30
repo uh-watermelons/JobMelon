@@ -1,0 +1,94 @@
+/*************************
+ 
+ 	Home Page Styling
+
+************************/
+
+.Homepage-Listing{
+	padding: 0.2em;
+	padding-left: 2em;
+ }
+ .Homepage-Listing:hover{
+	padding: 0.2em;
+	padding-left: 2em;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	border-radius: 10px;
+ 	transition: 0.3s;
+ }
+.Homepage-Listing > * {
+	padding: 0.2em;
+}
+.homepage-header {
+	width: 468px;
+	margin: 20px auto 20px auto; 
+	padding-bottom: 5px;
+	text-align: center;
+	border-width: 0 0 0.1px 0;
+	border-style: solid;
+	border-color: grey;
+	font-family: 'Source Code Pro', monospace;
+}
+/* Layout of all the cards */
+.job-listings-layout {
+/*	display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-auto-rows:minmax(100px, auto);
+    grid-gap: 2em;*/
+    margin: 1em 6em;
+}
+
+/* Layout of the cards themselves */
+.JobListing {
+	font-family: 'Source Code Pro', monospace;
+	display: grid;
+    grid-template-columns:1fr 1fr;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+ 	transition: 0.3s;
+}
+.JobListing:hover {
+ 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.JobListing > * {
+
+}
+.JobListing > .jobName {
+	height: 75px;
+	grid-column:1/3;
+	background-color: #eee;
+	padding: 1em;
+}
+.JobListing > .description {
+	height: 100%;
+}
+.JobListing > .description > .location {
+	padding: 1em;
+	height: 75%;
+
+	border-right:
+		solid
+		1px
+		#CCC;
+}
+.JobListing > .description > .price {
+	padding: 1em;
+	color: #FFF;
+	background-color: #007944;
+}
+
+.JobListing > .picture {
+	height: 180px;
+}
+.job-listing-button {
+	grid-column: 1/3;
+	padding: 10px;
+	border-radius: 5px;
+ 	font-weight: 600;
+ 	text-align: center;
+ 	line-height: 50px;
+ 	color: #FFF;
+ 	transition: all 0.2s;
+ 	background: #F35588;
+}
+.job-listing-button:hover {
+	background: #FFBBB4;
+}

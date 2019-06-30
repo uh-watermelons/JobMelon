@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 class JobListing extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  routeChange = () => {
+    const linkToJob = '/job/' + this.props.data._id;
+    this.props.history.push(linkToJob);
+  }
 
   render() {
     const {
@@ -18,23 +23,21 @@ class JobListing extends Component {
         description,
         datePosted
       } = this.props.data;
-
+    let formattedDate = moment(datePosted).format("dddd, MMMM Do YYYY, hA");
     const listingStyle = {
-      borderBottom: "1px solid black",
+      borderBottom: "0.1px solid grey",
       paddingBottom: "1em"
     };
-    const linkToJob = '/job/' + _id;
     return (
-      <div style={listingStyle} className="Listing">
+      <div onClick={this.routeChange} style={listingStyle} className="Homepage-Listing">
         <h3>{ jobName }</h3>
         <h4>${ price }</h4>
         <p>{cityName}, {stateCode}</p>
         <p>{description}</p>
-        <p>Created: {datePosted}</p>
-        <Link className="job-listing-button" to={linkToJob}>View Job</Link>
+        <p>Posted: {formattedDate}</p>
       </div>
       );
   }
 }
 
-export default JobListing;
+export default withRouter(JobListing);

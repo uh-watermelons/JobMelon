@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
 import defaultPicture from '../../../images/user.png';
+import './JobListingDetailed.css';
 import axios from 'axios'
 
 class JobListingDetailed extends Component {
@@ -17,6 +18,12 @@ class JobListingDetailed extends Component {
       .get(url)
       .then(res => this.setState({listingData:res.data}))
       .catch(err => console.log(err))
+  }
+
+  handleClick = () => {
+    console.log('clickity');
+    const message = 'Client will be notified. If interested, they will contact you through email.';
+    window.confirm(message);
   }
 
   render() {
@@ -35,8 +42,8 @@ class JobListingDetailed extends Component {
         <Header />
         <div className="listing">
           <div className="listing-info">
-            <h1 style={{"borderBottom":"solid 1px #CCC"}}>{ jobName }</h1>
-            <h3>{ cityName }, { stateCode }</h3>
+            <h2 style={{"borderBottom":"solid 1px #CCC"}}>{ jobName }</h2>
+            <h4>{ cityName }, { stateCode }</h4>
             <h2>${ price }</h2>
             <p>{ description }</p>
           </div>
@@ -45,7 +52,7 @@ class JobListingDetailed extends Component {
                 <img alt="default" src={ defaultPicture }/>
               </div>
                <h4 style={{textAlign:"center"}}>{ownerName}</h4>
-              <button className="contact-btn" href="#">Message</button>
+              <button onClick={this.handleClick} className="contact-btn" href="#">Contact</button>
           </div>
         </div>
         <Footer />

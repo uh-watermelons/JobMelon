@@ -3,6 +3,7 @@ import JobListing from "./JobListing";
 import Header from '../../Header';
 import Footer from '../../Footer';
 import axios from 'axios';
+import './HomePage.css';
 
 class HomePage extends Component {
 

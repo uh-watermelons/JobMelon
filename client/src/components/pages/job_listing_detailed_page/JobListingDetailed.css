@@ -1,0 +1,53 @@
+.JobListingDetailed {
+
+}
+.listing {
+	font-family: 'Source Code Pro', monospace;
+	margin: 2em 5em;
+	display: grid;
+    grid-template-columns: 4fr 1fr;	
+}
+
+.listing-info {
+	padding-right: 10em;
+}
+.listing-info > * {
+	padding: 10px;
+}
+
+.listing-contact {
+	border-left:
+		solid
+		1px
+		#CCC;
+		padding: 2em;
+}
+.listing-contact > * {
+
+}
+.listing-contact > div > img {
+	max-width: 100%;
+}
+
+.listing-contact > .contact-btn {
+	/*
+	background-color: gray;
+	color: white;
+	*/
+	border-radius: 5px;
+ 	font-weight: 600;
+ 	text-align: center;
+ 	color: #FFF;
+ 	transition: all 0.2s;
+ 	background: #F35588;
+ 	margin-top: 1em;
+	padding: 1em 3em;
+	min-width: 100%;
+	font-size: 20px;
+	border: none;
+
+}
+
+.listing-contact > .contact-btn:hover {
+	background: #FFBBB4;
+}
