@@ -5,6 +5,7 @@ import CreateJobListing from './pages/create_job_listing_page/CreateJobListing';
 import Profile from './pages/profile_page/Profile';
 import Register from './pages/register_page/Register';
 import Login from './pages/login_page/Login';
+import EditUser from './pages/edit_user_page/EditUser';
 import ContactUs from './pages/contact_us/ContactUs';
 import TermsOfUse from './pages/terms_of_use/TermsOfUse';
 import PrivacyPolicy from './pages/privacy_policy/PrivacyPolicy';
@@ -62,6 +63,7 @@ class App extends Component {
           <Switch>
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/createjob" component={CreateJobListing} />
+            <PrivateRoute exact path="/edit" component={EditUser} />
           </Switch>
           <Route exact path="/contactus" component={ContactUs}/>
           <Route exact path="/terms" component={TermsOfUse}/>
