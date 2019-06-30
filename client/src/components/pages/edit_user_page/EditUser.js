@@ -17,8 +17,29 @@ class EditUser extends Component {
       email: '',
       ccNumber: '',
       ccSecurityCode: '',
-      ccExpiryDate: '',
+      ccExpiryDate: ''
     };
+  }
+  componentDidMount() {
+    // Connect to redux store to get auth info
+    // Look at Header.js for example
+    // Once you get auth info you get the userID
+    if(this.props.auth.isAuthenticated) {
+      let userId = this.props.auth.user.id; // TODO
+      let url = '/api/user/' + userId + '';
+      axios
+        .get(url)
+        .then(res => {this.setState({
+          firstName: res.data.firstName,
+          lastName: res.data.lastName,
+          email: res.data.email,
+          ccNumber: res.data.ccNumber,
+          ccSecurityCode: res.data.ccSecurityCode,
+          ccExpiryDate: res.data.ccExpiryDate
+          })
+        })
+        .catch(err => console.log(err));   
+      }
   }
 
   handleChange = (event) => {
@@ -27,6 +48,7 @@ class EditUser extends Component {
       { [field]: event.target.value}
       );
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     const updatedUser = {
@@ -36,16 +58,15 @@ class EditUser extends Component {
       ccNumber: this.state.ccNumber,
       ccSecurityCode: this.state.ccSecurityCode,
       ccExpiryDate: this.state.ccExpiryDate
-    }
-    console.log(updatedUser);
-    const url = '/api/user/edit/' + this.props.auth.user.id;
-    // axios
-    //   .post(url, newListing)
-    //   .then(res => {
-    //     console.log(res);    
-    //     this.props.history.push('/')
-    //   })
-    //   .catch(err => console.log(err));
+    };
+    const url = '/api/user/edit/' + this.props.auth.user.id + '';
+    axios
+      .post(url, updatedUser)
+      .then(res => {
+        console.log(res);    
+        this.props.history.push('/')
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -56,7 +77,7 @@ class EditUser extends Component {
           <form noValidate onSubmit={this.handleSubmit} id="EditUser-form">
             <h3>Update Information</h3>
             <fieldset>
-              <label>First Name</label>
+              <label>First Name (required)</label>
               <input 
                 name="firstName" 
                 value={ this.state.firstName } 
@@ -77,7 +98,7 @@ class EditUser extends Component {
                 required/>
             </fieldset>
             <fieldset>
-              <label>Email</label>
+              <label>Email (required)</label>
               <input 
                 name="email" 
                 value={ this.state.email } 
@@ -89,21 +110,21 @@ class EditUser extends Component {
             <fieldset>
               <label>Payment Information</label>
               <input 
-                name="text" 
+                name="ccNumber" 
                 value={ this.state.ccNumber } 
                 onChange={ this.handleChange } 
                 placeholder="Card Number" 
                 type="text" 
                 required/>
               <input 
-                name="text" 
+                name="ccExpiryDate" 
                 value={ this.state.ccExpiryDate } 
                 onChange={ this.handleChange } 
                 placeholder="Expiration Date" 
                 type="text" 
                 required/>
               <input 
-                name="text" 
+                name="ccSecurityCode" 
                 value={ this.state.ccSecurityCode } 
                 onChange={ this.handleChange } 
                 placeholder="Security #" 

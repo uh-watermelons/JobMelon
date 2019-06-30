@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
-import CreateJobListing from '../create_job_listing_page/CreateJobListing';
 
 import axios from 'axios';
 
@@ -20,28 +19,28 @@ class Profile extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     // Connect to redux store to get auth info
     // Look at Header.js for example
     // Once you get auth info you get the userID
-    if(this.props.auth.isAuthorizaed) {
-      let userID = this.props.auth.user.id; // TODO
-      let url = '/api/user/' + userID;
-      axios
-        .get(url)
-        .then(res => this.setState({userData: res.data}))
-        .catch(err => console.log(err));       
+    if(this.props.auth.isAuthenticated) {
+      this.getUserInfo(this.props.auth.user.id);
     }
   }
 
-  handleEditProfile = (event) => {
-
+  componentWillUnmount = () => {
+    clearInterval(this.timerId);
+  }
+  getUserInfo(userId) {
+      let url = '/api/user/' + userId + '';
+      axios
+        .get(url)
+        .then(res => {this.setState({userData: res.data})})
+        .catch(err => console.log(err));     
   }
 
   render() {
-    console.log(this.state.userData);
-    const { userData} = this.state;
-    console.log(userData);
+    const { userData } = this.state;
     return (
       <div className="Profile">
         <Header />
@@ -57,7 +56,7 @@ class Profile extends Component {
             ccSecurityCode={ userData.ccSecurityCode }
             /> 
           <Link to="/createjob" className="btn create">Add new job offer</Link>
-          <h2 className="listings-header">My current job listings</h2>
+          <h2 style={{marginTop: '1em'}} className="listings-header">My Current Listings</h2>
           <CurrentListings userId={ userData._id }/>
         </div>
         <Footer />
@@ -71,7 +70,6 @@ function ProfileRole(props) {
 }
 
 function ProfileInformation(props) {
-  console.log(props);
   return (
   <div className="information">
   <h3>My information</h3>
@@ -83,7 +81,7 @@ function ProfileInformation(props) {
     ccExpiryDate={ props.ccExpiryDate }
     ccSecurityCode={ props.ccSecurityCode }
   />
-  <button onClick={props.handleEditProfile} className="btn edit">Edit Info</button>
+  <Link to='/edit' className="btn edit">Edit Info</Link>
   </div>
   );
 
@@ -92,10 +90,12 @@ function ProfileInformation(props) {
 function PaymentInformation(props) {
   const ccNumber = props.ccNumber+""; // for some reason can't get length property w/out +""
   const hasCard = (ccNumber.length > 0);
+  let lastfour = ccNumber+"";
+  if(lastfour.length>4) {lastfour = lastfour.substring(lastfour.length-5, lastfour.length-1)}
   return (
     hasCard
     ? (<div>
-        <p>Card Number: XXXX-XXXX-XXXX-(1234) -TODO</p>
+        <p>Card Number: XXXX-XXXX-XXXX-{lastfour}</p>
         <p>Expires: {props.ccExpiryDate }</p>
         <p>Security Code: {props.ccSecurityCode }</p>
       </div>)
@@ -108,26 +108,27 @@ function PaymentInformation(props) {
 
 
 class CurrentListings extends Component {
-  state = {
-    listings: []
+  constructor(props) {
+    super(props);
+    this.state = {
+      listings: []
+    }
   }
+
   componentDidMount = () => {
     this.getCurrentListings();
-    // Constantly update listings if it is removed
-    this.timerID = setInterval(this.getCurrentListings, 500);
   }
   componentWillUnmount = () => {
-    clearInterval(this.timerId);
   }
   componentDidUpdate(prevProps) {
     if(prevProps.userId != this.props.userId) {
-      //this.getCurrentListings();
+      this.getCurrentListings();
     }
   }
   getCurrentListings = () => {
     const userId = this.props.userId;
     if(userId) {
-    const url = '/api/listings/user/' + userId;
+    const url = '/api/listings/user/' + userId +'';
     axios
       .get(url)
       .then((res) => this.setState({listings:res.data}))
@@ -141,6 +142,7 @@ class CurrentListings extends Component {
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
       ;
+    this.getCurrentListings();
   }
   handleRemoveListing = (userId, listingId) => () => {
     const url = "/api/listings/delete/" + userId + "/" + listingId;
@@ -190,7 +192,7 @@ class CurrentListings extends Component {
     return (
       <div>
         {Listings}
-        <h4>Past job listings</h4>
+        <h4>Completed Listings</h4>
         {PastListings}
       </div>
       );
@@ -199,16 +201,17 @@ class CurrentListings extends Component {
 
 function Listing(props) {
   const {userId, listingId} = props;
+  const pageUrl = '/job/' + listingId;
   return (
     <div className="profile-listing">
       <p className="profile-listing-price">${props.price}</p>
-      <p className="profile-listing-name">{props.jobName}</p>
+      <Link to={pageUrl} className="profile-listing-name">{props.jobName}</Link>
       <button 
         onClick={props.handleCompleteListing(userId, listingId)} 
         className="btn complete">Complete</button>
       <button 
         onClick={props.handleRemoveListing(userId, listingId)} 
-        className="btn delete">X</button>
+        className="btn delete">Cancel</button>
     </div>
     );
 }
@@ -220,7 +223,7 @@ function PastListing(props) {
       <p className="profile-listing-complete-name">{props.jobName}</p>
       <button 
         onClick={props.handleRemoveListing(userId, listingId)} 
-        className="btn delete-completed">Remove</button>
+        className="btn delete-completed">Delete</button>
     </div>
     );
 }

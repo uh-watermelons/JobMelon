@@ -1,5 +1,4 @@
 const validateUserAuthenticity = (locals, userId) => {
-	console.log(locals, userId);
 	// Checks:
 	// 1. authorization exists
 	// 2. authorization has a userId

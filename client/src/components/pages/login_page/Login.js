@@ -24,7 +24,6 @@ class Login extends Component {
       this.props.history.push('/'); // Redirect to Home upon logging in
     }
     if(nextProps.errors) {
-      console.log(this.state.errors);
       this.setState({
         errors: nextProps.errors
       });

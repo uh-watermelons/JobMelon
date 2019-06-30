@@ -49,13 +49,14 @@ router.post("/create/:userId", isUserAuthenticated, (req, res) => {
 		if(!isValid) {
 			return res.status(400).json(errors);
 		} else {
+			const datePosted = new Date();
 			const newListing = new Listing({
 			jobName: req.body.jobName,
 			price: req.body.price,
 			cityName: req.body.cityName,
 			stateCode: req.body.stateCode,
 			description: req.body.description,
-			datePosted: Date.now(),
+			datePosted: datePosted,
 			owner: req.body.owner,
 			ownerName: req.body.ownerName,
 			complete: false,
@@ -119,6 +120,7 @@ router.post("/complete/:userId/:listingId", isUserAuthenticated, (req, res) => {
 // @access private
 router.get('/user/:userId', isUserAuthenticated, (req, res) => {
 	const { userId } = req.params;
+	console.log(userId);
 	if(validateUserAuthenticity(res.locals, userId)) {
 		// Find all of the user's listings as an array
 		Listing.find({owner:userId}, null, {lean:true}, (err, docs) => {

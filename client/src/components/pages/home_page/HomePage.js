@@ -17,7 +17,6 @@ class HomePage extends Component {
   getDatabase = () => {
     axios.get('/api/listings')
     .then(res => {
-      console.log(res.data);
       this.setState({listings: res.data})
     })
     .catch(err => {
@@ -27,6 +26,11 @@ class HomePage extends Component {
   // Grab listings from Mongo
   componentDidMount() {
     this.getDatabase();
+    this.timerID = setInterval(this.getDatabase, 500);    
+  }
+  
+  componentWillUnmount = () => {
+    clearInterval(this.timerId);
   }
 
   render() {
@@ -44,11 +48,6 @@ class HomePage extends Component {
       </div>
       );
   }
-}
-
-const Listings = (props) => {
-  console.log(props.data);
-  return (<div>Hello</div>);
 }
 
 export default HomePage;
