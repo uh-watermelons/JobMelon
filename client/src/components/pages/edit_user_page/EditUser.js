@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
 import { Link } from 'react-router-dom';
+import Errors from '../errors/Errors';
 import './EditUser.css'
+
+import object from 'lodash';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -17,7 +20,8 @@ class EditUser extends Component {
       email: '',
       ccNumber: '',
       ccSecurityCode: '',
-      ccExpiryDate: ''
+      ccExpiryDate: '',
+      errors: []
     };
   }
   componentDidMount() {
@@ -66,7 +70,10 @@ class EditUser extends Component {
         console.log(res);    
         this.props.history.push('/')
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.setState({errors:object.values(err.response.data)});
+      });
   }
 
   render() {
@@ -76,6 +83,7 @@ class EditUser extends Component {
         <div className="EditUser-container">
           <form noValidate onSubmit={this.handleSubmit} id="EditUser-form">
             <h3>Update Information</h3>
+            <Errors errors={this.state.errors} />
             <fieldset>
               <label>First Name (required)</label>
               <input 

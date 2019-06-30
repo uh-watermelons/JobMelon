@@ -121,9 +121,7 @@ class CurrentListings extends Component {
   componentWillUnmount = () => {
   }
   componentDidUpdate(prevProps) {
-    if(prevProps.userId !== this.props.userId) {
-      this.getCurrentListings();
-    }
+    this.getCurrentListings();
   }
   getCurrentListings = () => {
     const userId = this.props.userId;
@@ -151,6 +149,7 @@ class CurrentListings extends Component {
       .then(res => console.log(res.data))
       .catch(err => console.log(err))
       ;
+    this.getCurrentListings();
   }
 
   render() {

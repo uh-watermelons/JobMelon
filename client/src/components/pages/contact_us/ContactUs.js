@@ -10,7 +10,7 @@ class ContactUs extends Component {
       <div className="ContactUs">
         <Header />
         <div>
-          <div class="center">
+          <div className="center">
             <br></br>
             <br></br>
             <h2 id="contact-us">Contact Us</h2>

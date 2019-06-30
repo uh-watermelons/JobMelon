@@ -105,7 +105,7 @@ router.post("/complete/:userId/:listingId", isUserAuthenticated, (req, res) => {
 	// authenticator should have set res.locals.auth
 	if(validateUserAuthenticity(res.locals, userId)) {
 		Listing.update({_id:listingId}, { $set: {complete:true} }, null, (err, docs) => {
-			console.log('successfully updated');
+			//console.log('successfully updated');
 		})
 	} else {
 		res.status(401).json({
@@ -120,7 +120,6 @@ router.post("/complete/:userId/:listingId", isUserAuthenticated, (req, res) => {
 // @access private
 router.get('/user/:userId', isUserAuthenticated, (req, res) => {
 	const { userId } = req.params;
-	console.log(userId);
 	if(validateUserAuthenticity(res.locals, userId)) {
 		// Find all of the user's listings as an array
 		Listing.find({owner:userId}, null, {lean:true}, (err, docs) => {

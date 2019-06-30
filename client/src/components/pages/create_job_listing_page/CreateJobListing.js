@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
 import { Link } from 'react-router-dom';
-import './CreateJobListing.css'
 import CurrencyInput from 'react-currency-input';
+import Errors from '../errors/Errors';
+import './CreateJobListing.css'
+
+import object from 'lodash';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -18,6 +21,7 @@ class CreateJobListing extends Component {
       stateCode: '',
       description: '',
       price: 0,
+      errors: [],
     };
   }
 
@@ -43,24 +47,27 @@ class CreateJobListing extends Component {
       ownerName: this.props.auth.user.name,
       complete: false
     }
-    console.log(newListing);
     const url = '/api/listings/create/' + this.props.auth.user.id;
     axios
       .post(url, newListing)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-
-    this.props.history.push('/');
+      .then(res => {
+        console.log(res);
+        this.props.history.push('/');
+        })
+      .catch(err => this.setState({errors: object.values(err.response.data)}));
   }
 
   render() {
+
+      const charsLeft = (500 - this.state.description.length);
       return (
       <div className="CreateJobListing">
         <Header />
         <div className="CreateJobListing-container">
           <form noValidate onSubmit={this.handleSubmit} id="CreateJobListing-form">
             <h3>Create Job Listing</h3>
-            <fieldset>
+            <Errors errors={this.state.errors}/>
+            <fieldset style={{marginTop: '1em'}}>
               <input 
                 name="jobName" 
                 value={ this.state.jobName } 
@@ -100,6 +107,7 @@ class CreateJobListing extends Component {
                 tabIndex="4" 
                 required>
                 </textarea>
+                <p style={{fontSize: '0.9em', float:'right'}}>Characters remaining: {charsLeft}</p>
             </fieldset>
             <label>Price</label>
             <CurrencyInput ref="priceInput" prefix="$" value={this.state.price} onChangeEvent={this.handlePriceChange}/>

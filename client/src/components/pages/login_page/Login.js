@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
+import Errors from '../errors/Errors';
 import './Login.css'
+
+import object from 'lodash';
 
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -14,7 +17,7 @@ class Login extends Component {
     this.state = {
       email: '',
       password: '',
-      errors: {}
+      errors: []
     };
 
   }
@@ -25,7 +28,7 @@ class Login extends Component {
     }
     if(nextProps.errors) {
       this.setState({
-        errors: nextProps.errors
+        errors: object.values(nextProps.errors)
       });
     }
   }
@@ -52,14 +55,13 @@ class Login extends Component {
   }
 
   render() {
-      const { errors } = this.state;
-
       return (
       <div className="Login">
         <Header />
         <div className="Login-container">
           <form noValidate onSubmit={this.handleSubmit} id="Login-form">
             <h3>Log In</h3>
+            <Errors errors={this.state.errors} />
             <fieldset>
               <input 
                 name="email"

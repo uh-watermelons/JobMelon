@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../../Header';
 import Footer from '../../Footer';
+import Errors from '../errors/Errors';
 import './Register.css'
 
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerUser } from '../../../actions/authActions';
-
+import object from 'lodash';
 
 class Register extends Component {
   constructor(props) {
@@ -17,15 +18,16 @@ class Register extends Component {
       email: '',
       password: '',
       password2: '',
-      errors: '',
+      errors: [],
       role: 'client'
     };
   }
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.errors) {
+      console.log(nextProps.errors);
       this.setState({
-        errors: nextProps.errors
+        errors: object.values(nextProps.errors)
       });
     }
   }
@@ -69,6 +71,7 @@ class Register extends Component {
         <div className="Register-container">
           <form noValidate onSubmit={this.handleSubmit} id="Register-form">
             <h3>Sign Up</h3>
+            <Errors errors={this.state.errors} />
             <fieldset>
               <input 
                 name="firstName"

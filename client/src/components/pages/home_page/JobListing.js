@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import moment from 'moment';
+
 class JobListing extends Component {
   constructor(props) {
     super(props);
