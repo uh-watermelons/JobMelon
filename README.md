@@ -28,6 +28,7 @@ Updated 6/24/19
 * ~~Review and update all documentation and create documentation as needed~~ (6/30/19)
   * ~~Wiki~~ (6/30/19)
   * ~~README~~ (6/30/19)
+  * ~~Report~~ (6/30/19)
 
 #### Jan
 - Fix Home Page
