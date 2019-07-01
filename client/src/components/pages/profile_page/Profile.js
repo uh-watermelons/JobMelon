@@ -91,7 +91,8 @@ function ProfileInformation(props) {
 function PaymentInformation(props) {
   const ccNumber = props.ccNumber+""; // for some reason can't get length property w/out +""
   const hasCard = (ccNumber.length > 0);
-  let lastfour = ccNumber+"";
+  let lastfour = ccNumber === 'undefined' ? "" : ccNumber;
+  console.log(lastfour);
   if(lastfour.length>4) {lastfour = lastfour.substring(lastfour.length-5, lastfour.length-1)}
   return (
     hasCard
