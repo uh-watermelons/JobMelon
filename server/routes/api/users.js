@@ -25,7 +25,6 @@ const cryptr = new Cryptr(keys.secretOrKey); // instatiate encrypter/decrypter w
 // @desc Get sensitive user information
 // @access Private
 router.get('/:userId', isUserAuthenticated, (req, res) => {
-	
 	const { userId } = req.params;
 	// authenticator should have set res.locals.auth
 	if(validateUserAuthenticity(res.locals, userId)) 
@@ -35,29 +34,32 @@ router.get('/:userId', isUserAuthenticated, (req, res) => {
 		EndUser
 			.findOne({_id:userId})
 			.then(user => {
-				const encryptedCCNumber = user.ccNumber;
+				const encryptedCCNumber = user.ccNumber || '';
 				let decryptedCCNumber = '';
-				if(encryptedCCNumber) {
+				if(encryptedCCNumber.length != 0) {
 					decryptedCCNumber = cryptr.decrypt(user.ccNumber);
 				}
       			const userData = {
 					_id: user._id,
 				    firstName: user.firstName,
-				    lastName: user.lastName,
+				    lastName: user.lastName || '',
 				    email: user.email,
-				    ccNumber: decryptedCCNumber,
-				    ccSecurityCode: user.ccSecurityCode,
-				    ccExpiryDate: user.ccExpiryDate,
+				    ccNumber: decryptedCCNumber || '',
+				    ccSecurityCode: user.ccSecurityCode || '',
+				    ccExpiryDate: user.ccExpiryDate || '',
       			};
       			res.json(userData);
 			})
-			.catch(err => 
-				res
-					.status(404)
-					.json({
-						status: 404,
-						message: 'User does not exist'
-					})
+			.catch(err => {
+					console.log('boo');
+					res
+						.status(404)
+						.json({
+							status: 404,
+							message: 'User does not exist'
+						})
+					}
+
 				);
 	} else {
 		res.status(401).json({

@@ -27,6 +27,11 @@ router.post("/register", (req, res) => {
 	if(!isValid) {
 		return res.status(400).json(errors);
 	}
+	// Missing fields;
+	const lastName = '';
+	const ccNumber = '';
+	const ccSecurityCode = '';
+	const ccExpiryDate = '';
 
 	EndUser
 		.findOne({ email: req.body.email })
@@ -38,7 +43,11 @@ router.post("/register", (req, res) => {
 					firstName: req.body.firstName,
 					email: req.body.email,
 					password: req.body.password,
-					role: req.body.role
+					role: req.body.role,
+					lastName: lastName,
+					ccNumber: ccNumber,
+					ccSecurityCode: ccSecurityCode,
+					ccExpiryDate: ccExpiryDate
 				});
 
 				// Hash password before saving in database

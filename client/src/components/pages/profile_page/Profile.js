@@ -19,7 +19,7 @@ class Profile extends Component {
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     // Connect to redux store to get auth info
     // Look at Header.js for example
     // Once you get auth info you get the userID
@@ -29,13 +29,14 @@ class Profile extends Component {
   }
 
   componentWillUnmount = () => {
-    clearInterval(this.timerId);
   }
   getUserInfo(userId) {
       let url = '/api/user/' + userId + '';
       axios
         .get(url)
-        .then(res => {this.setState({userData: res.data})})
+        .then(res => {
+          this.setState({userData: res.data})
+        })
         .catch(err => console.log(err));     
   }
 
