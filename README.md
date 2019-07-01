@@ -136,9 +136,9 @@ As a disclaimer, we are currently storing the URI connection string to the Mongo
 https://github.com/uh-watermelons/jobmelon
 
 ##### Link to final project documentation
+https://github.com/uh-watermelons/jobmelon/blob/master/ICS_491-JobMelon_Documentation.pdf
 
-
-#### Link to final release version of JobMelon
+##### Link to final release version of JobMelon
 https://github.com/uh-watermelons/jobmelon/releases/tag/v1.0
 
 ##### Link to JobMelon Wiki page
