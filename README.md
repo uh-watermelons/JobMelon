@@ -61,7 +61,7 @@ Updated 6/24/19
  - Individual Job Listing pages
  - Contacting clients
  - Updating user information
- 
+
 #### Leisha
 - Create Job Posting Page
   - Jobs will have Name, Price, Description, Location
@@ -111,14 +111,14 @@ Create Listing
 3. Install NodeJS server-side packages  
 - In the command line, change directory to `../jobmelon/server/`
   - Install all the NodeJS packages needed for this application by typing `npm install`
-  
+
 4. Install NodeJS client-side packages
 - In the command line, change directory to `../jobmelon/client/`
   - Install all the NodeJS packages needed for this application by typing `npm install`
 
 5. Start the application
 - In the command line, change directory to `../jobmelon/`
-  - Start the application by typing `npm run start`
+  - Start the application by typing `npm run prod`
 
 6. Open the application
 - Browse to the application at http://localhost:3000/
@@ -139,9 +139,9 @@ https://github.com/uh-watermelons/jobmelon
 
 
 #### Link to final release version of JobMelon
-
+https://github.com/uh-watermelons/jobmelon/releases/tag/v1.0
 
 ##### Link to JobMelon Wiki page
-
+https://github.com/uh-watermelons/jobmelon/wiki
 
 ***
