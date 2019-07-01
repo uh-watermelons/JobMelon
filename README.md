@@ -16,7 +16,7 @@ Back-end
 
  *__*Completed Tasks will be be ~~crossed through~~*__*
 
-Updated 6/24/19
+Updated 6/30/19
 #### Jack
 * ~~Create database~~ (6/10/19)
 * ~~Populate Database~~ (6/16/19)
