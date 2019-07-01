@@ -129,6 +129,8 @@ Overall, this was a pretty difficult project, especially given the time constrai
 
 Another issue that we had was that, apart from Node, React, MongoDB, the other components of the application (Express, Axios, JWT, and others) were new and very different from other applications we had individually created in the past and there was an intense learning curve for the usage of these components and interlinking them together.
 
+As a disclaimer, we are currently storing the URI connection string to the MongoDB database which stores our user and job listing data as well as the key used to encrypt the sensitive information (credit card number, password) in our source code. In a production environment, we would have stored these variables in environment variables instead because otherwise, these would be open to the public and they would be able to get into the database and decrypt the sensitive information.
+
 #### Links
 ##### Link to GitHub repository
 https://github.com/uh-watermelons/jobmelon
@@ -136,7 +138,7 @@ https://github.com/uh-watermelons/jobmelon
 ##### Link to final project documentation
 
 
-##### Link to final release version of JobMelon
+#### Link to final release version of JobMelon
 
 
 ##### Link to JobMelon Wiki page
