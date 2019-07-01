@@ -7,7 +7,8 @@
     "server-dev": "cd server && nodemon server.js",
     "client": " cd client && npm run start",
     "client-install": "npm install --prefix client",
-    "dev": "concurrently  \"npm run server-dev\" \"npm run client\" "
+    "dev": "concurrently  \"npm run server-dev\" \"npm run client\" ",
+    "prod": "concurrently \"npm run server\" \"npm run client\" "
   },
   "engines": {
     "node": "10.x"
