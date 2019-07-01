@@ -93,7 +93,7 @@ function PaymentInformation(props) {
   const hasCard = (ccNumber.length > 0);
   let lastfour = ccNumber === 'undefined' ? "" : ccNumber;
   console.log(lastfour);
-  if(lastfour.length>4) {lastfour = lastfour.substring(lastfour.length-5, lastfour.length-1)}
+  if(lastfour.length>4) {lastfour = lastfour.substring(lastfour.length-4, lastfour.length)}
   return (
     hasCard
     ? (<div>
